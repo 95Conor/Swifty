@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation;
+using Swifty.Extensions;
 
 namespace Swifty
 {
@@ -28,6 +28,8 @@ namespace Swifty
 
             services.AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
+
+            services.ConfigureDatabase(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

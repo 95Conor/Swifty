@@ -1,0 +1,3 @@
+﻿Swifty DB Name: swifty
+Swifty DB User: swiftylogin
+Swifty DB Pwrd: Swifty123-()
