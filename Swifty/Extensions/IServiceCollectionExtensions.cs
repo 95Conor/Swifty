@@ -13,8 +13,6 @@ namespace Swifty.Extensions
     {
         public static void ConfigureDatabase(this IServiceCollection serviceCollection, IConfiguration configuration)
         {
-            string test = configuration.GetConnectionString("Swifty");
-
             serviceCollection.AddDbContext<SwiftyContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("Swifty")));
         }
