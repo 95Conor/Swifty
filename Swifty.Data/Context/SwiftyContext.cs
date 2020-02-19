@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Swifty.Core.Entities;
+using System.Reflection;
 
 namespace Swifty.Data.Context
 {
@@ -25,7 +26,11 @@ namespace Swifty.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Might need some stuff in here, or it might just work
+            // All configuration done in separate configuration classes - See EntityConfiguration folder
+            // These can all be registered with the below extenion method
+            // https://www.learnentityframeworkcore.com/configuration/fluent-api
+
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }
