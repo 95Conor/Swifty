@@ -15,12 +15,6 @@ namespace Swifty.Data.EntityConfiguration
 
             builder.Property(skill => skill.Detail)
                     .IsRequired();
-
-            builder.Property(skill => skill.Level)
-                    .IsRequired();
-
-            builder.Property(skill => skill.Area)
-                    .IsRequired();
         }
     }
 }
