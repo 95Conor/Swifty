@@ -24,6 +24,10 @@ namespace Swifty.Data.Context
 
         public DbSet<SkillSnapshot> SkillSnapshots { get; set; }
 
+        public DbSet<Admin> Admins { get; set; }
+
+        public DbSet<User> Users { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // All configuration done in separate configuration classes - See EntityConfiguration folder

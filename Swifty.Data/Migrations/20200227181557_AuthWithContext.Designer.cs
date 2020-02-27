@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Swifty.Data.Context;
 
 namespace Swifty.Data.Migrations
 {
     [DbContext(typeof(SwiftyContext))]
-    partial class SwiftyContextModelSnapshot : ModelSnapshot
+    [Migration("20200227181557_AuthWithContext")]
+    partial class AuthWithContext
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
