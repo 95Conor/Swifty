@@ -31,6 +31,8 @@ namespace Swifty
 
             services.ConfigureDatabase(Configuration);
 
+            services.ConfigureAuthorisation(Configuration);
+
             services.ConfigureRepositories();
         }
 
