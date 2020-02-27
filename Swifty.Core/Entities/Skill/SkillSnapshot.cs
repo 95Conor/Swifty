@@ -9,8 +9,7 @@ namespace Swifty.Core.Entities
     {
         public int Id { get; set; }
 
-        // This will probably change to use user entity or something? Maybe we will just save the name/email - need to cross this bridge.
-        public string User { get; set; }
+        public User User { get; set; }
 
         public SkillSet RedSkills { get; set; }
 

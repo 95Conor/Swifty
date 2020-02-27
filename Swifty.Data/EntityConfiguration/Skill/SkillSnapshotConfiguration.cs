@@ -13,8 +13,8 @@ namespace Swifty.Data.EntityConfiguration
         {
             builder.HasKey(skillSnapshot => skillSnapshot.Id);
 
-            builder.Property(skillSnapshot => skillSnapshot.User)
-                    .IsRequired();
+            //builder.Property(skillSnapshot => skillSnapshot.User)
+            //        .IsRequired();
 
             builder.Property(skillSnapshot => skillSnapshot.SnapshotDate)
                     .HasColumnType("Date")
