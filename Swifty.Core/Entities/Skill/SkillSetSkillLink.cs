@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Swifty.Core.Contracts.Entities;
 
 namespace Swifty.Core.Entities
 {
-    public class SkillSetSkillLink
+    public class SkillSetSkillLink : IEntityBase
     {
         public int Id { get; set; }
 
