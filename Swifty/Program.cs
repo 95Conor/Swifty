@@ -7,9 +7,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-// Everything commented out may be necessary for auth via SSO with develop
-// It requires installing the Product.Configuration.Provider packaage below (think this is a Tigerbay package but not sure, check Nifty).
-
 using Product.Configuration.Provider;
 
 namespace Swifty
