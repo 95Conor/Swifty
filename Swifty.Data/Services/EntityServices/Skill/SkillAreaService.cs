@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Swifty.Core.Contracts.Services;
+using Swifty.Data.Contracts.Services;
 using Swifty.Core.Entities;
 
-namespace Swifty.Core.Services
+namespace Swifty.Data.Services
 {
     public class SkillAreaService : IEntityService<SkillArea>
     {
