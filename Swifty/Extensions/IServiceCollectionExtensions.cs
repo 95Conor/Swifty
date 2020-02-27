@@ -18,7 +18,7 @@ namespace Swifty.Extensions
             serviceCollection.AddDbContext<SwiftyContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("Swifty")));
 
-            serviceCollection.AddSingleton<SwiftyContext>();
+            //serviceCollection.AddSingleton<SwiftyContext>();
         }
 
         public static void ConfigureRepositories(this IServiceCollection serviceCollection)
