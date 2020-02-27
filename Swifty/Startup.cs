@@ -30,6 +30,8 @@ namespace Swifty
                 .AddRazorRuntimeCompilation();
 
             services.ConfigureDatabase(Configuration);
+
+            services.ConfigureRepositories();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
