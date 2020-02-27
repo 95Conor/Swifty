@@ -4,10 +4,12 @@ using System.Text;
 
 namespace Swifty.Core.Entities
 {
-    public class SkillSet
+    public class SkillSetSkillLink
     {
         public int Id { get; set; }
 
-        public ICollection<SkillSetSkillLink> Set { get; set; }
+        public Skill LinkedSkill { get; set; }
+
+        public SkillSet LinkedSkillSet { get; set; }
     }
 }
