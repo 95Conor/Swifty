@@ -9,6 +9,7 @@ using Swifty.Data.Context;
 using Swifty.Data.Contracts;
 using Swifty.Data.Repositories;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Swifty.Web.Auth;
 
 namespace Swifty.Extensions
 {
@@ -44,6 +45,11 @@ namespace Swifty.Extensions
                 options.ResponseType = "code id_token";
                 options.SaveTokens = true;
                 options.GetClaimsFromUserInfoEndpoint = true;
+            });
+
+            serviceCollection.AddAuthorization(options =>
+            {
+                options.AddPolicy("IsAdmin", policy => policy.Requirements.Add(new IsAdminRequirement()));
             });
         }
     }

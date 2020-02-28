@@ -22,6 +22,7 @@ namespace Swifty.Web.Auth
         protected override async Task HandleRequirementAsync(AuthorizationHandlerContext context, IsAdminRequirement requirement)
         {
             string emailClaim = context.User.Claims.FirstOrDefault(x => x.Type.Equals(configuration["Authorization:IdentityServer:ClaimsProperties:Email"]))?.Value;
+
             if (string.IsNullOrWhiteSpace(emailClaim))
             {
                 return;
