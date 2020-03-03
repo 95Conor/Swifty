@@ -29,27 +29,27 @@ namespace Swifty.Extensions
 
         public static void ConfigureRepositories(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddSingleton<SwiftyRepository<Admin>, AdminRepository>();
-            serviceCollection.AddSingleton<SwiftyRepository<User>, UserRepository>();
-
-            serviceCollection.AddSingleton<SwiftyRepository<SkillArea>, SkillAreaRepository>();
-            serviceCollection.AddSingleton<SwiftyRepository<SkillLevel>, SkillLevelRepository>();
-            serviceCollection.AddSingleton<SwiftyRepository<Skill>, SkillRepository>();
-            serviceCollection.AddSingleton<SwiftyRepository<SkillSet>, SkillSetRepository>();
-            serviceCollection.AddSingleton<SwiftyRepository<SkillSetSkillLink>, SkillSetSkillLinkRepository>();
-            serviceCollection.AddSingleton<SwiftyRepository<SkillSnapshot>, SkillSnapshotRepository>();
+            serviceCollection.AddTransient<SwiftyRepository<Admin>, AdminRepository>();
+            serviceCollection.AddTransient<SwiftyRepository<User>, UserRepository>();
+                                 
+            serviceCollection.AddTransient<SwiftyRepository<SkillArea>, SkillAreaRepository>();
+            serviceCollection.AddTransient<SwiftyRepository<SkillLevel>, SkillLevelRepository>();
+            serviceCollection.AddTransient<SwiftyRepository<Skill>, SkillRepository>();
+            serviceCollection.AddTransient<SwiftyRepository<SkillSet>, SkillSetRepository>();
+            serviceCollection.AddTransient<SwiftyRepository<SkillSetSkillLink>, SkillSetSkillLinkRepository>();
+            serviceCollection.AddTransient<SwiftyRepository<SkillSnapshot>, SkillSnapshotRepository>();
         }
 
         public static void ConfigureServices(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddSingleton<AdminService>();
-            serviceCollection.AddSingleton<UserService>();
-            serviceCollection.AddSingleton<SkillAreaService>();
-            serviceCollection.AddSingleton<SkillLevelService>();
-            serviceCollection.AddSingleton<SkillService>();
-            serviceCollection.AddSingleton<SkillSetService>();
-            serviceCollection.AddSingleton<SkillSetSkillLinkService>();
-            serviceCollection.AddSingleton<SkillSnapshotService>();
+            serviceCollection.AddTransient<AdminService>();
+            serviceCollection.AddTransient<UserService>();
+            serviceCollection.AddTransient<SkillAreaService>();
+            serviceCollection.AddTransient<SkillLevelService>();
+            serviceCollection.AddTransient<SkillService>();
+            serviceCollection.AddTransient<SkillSetService>();
+            serviceCollection.AddTransient<SkillSetSkillLinkService>();
+            serviceCollection.AddTransient<SkillSnapshotService>();
         }
 
         public static void ConfigureAuthorisation(this IServiceCollection serviceCollection, IConfiguration configuration)
@@ -70,7 +70,7 @@ namespace Swifty.Extensions
                 options.GetClaimsFromUserInfoEndpoint = true;
             });
 
-            serviceCollection.AddSingleton<IAuthorizationHandler, IsAdminHandler>();
+            serviceCollection.AddTransient<IAuthorizationHandler, IsAdminHandler>();
 
             serviceCollection.AddAuthorization(options =>
             {
