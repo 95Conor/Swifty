@@ -18,7 +18,7 @@ namespace Swifty.Data.Repositories
             this.dbContext = dbContext;
         }
 
-        public virtual async Task<IReadOnlyList<TEntity>> ListAllAsync()
+        public virtual async Task<List<TEntity>> ListAllAsync()
         {
             return await dbContext.Set<TEntity>().ToListAsync();
         }
@@ -48,7 +48,7 @@ namespace Swifty.Data.Repositories
             return dbContext.SaveChangesAsync();
         }
 
-        public virtual async Task<IReadOnlyList<TEntity>> ListWhereAsync(Func<TEntity, bool> criteria)
+        public virtual async Task<List<TEntity>> ListWhereAsync(Func<TEntity, bool> criteria)
         {
             var resultSet = dbContext.Set<TEntity>().Where(criteria).AsQueryable();
 

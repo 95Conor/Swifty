@@ -34,7 +34,7 @@ namespace Swifty.Data.Repositories
             await base.UpdateAsync(entity);
         }
 
-        public override async Task<IReadOnlyList<Admin>> ListAllAsync()
+        public override async Task<List<Admin>> ListAllAsync()
         {
             var entities = await base.ListAllAsync();
 

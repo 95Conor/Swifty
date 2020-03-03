@@ -9,8 +9,8 @@ namespace Swifty.Data.Contracts
     {
         public Task<TEntity> GetByIdAsync(int id);
 
-        public Task<IReadOnlyList<TEntity>> ListAllAsync();
+        public Task<List<TEntity>> ListAllAsync();
 
-        public Task<IReadOnlyList<TEntity>> ListWhereAsync(Func<TEntity, bool> criteria);
+        public Task<List<TEntity>> ListWhereAsync(Func<TEntity, bool> criteria);
     }
 }
