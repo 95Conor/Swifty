@@ -1,3 +1,5 @@
 ﻿Swifty DB Name: swifty
 Swifty DB User: swiftylogin
 Swifty DB Pwrd: Swifty123-()
+
+- Probably want to add IsArchived to Skill so we can archive skills but they can still be seen in snapshots
