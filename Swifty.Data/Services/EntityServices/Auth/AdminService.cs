@@ -11,9 +11,9 @@ namespace Swifty.Data.Services
 {
     public class AdminService : IEntityService<Admin>
     {
-        private readonly AdminRepository adminRepository;
+        private readonly SwiftyRepository<Admin> adminRepository;
 
-        public AdminService(AdminRepository adminRepository)
+        public AdminService(SwiftyRepository<Admin> adminRepository)
         {
             this.adminRepository = adminRepository;
         }

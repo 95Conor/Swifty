@@ -10,6 +10,9 @@ using Swifty.Data.Contracts;
 using Swifty.Data.Repositories;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Swifty.Web.Auth;
+using Microsoft.AspNetCore.Authorization;
+using Swifty.Data.Services;
+using Swifty.Core.Entities;
 
 namespace Swifty.Extensions
 {
@@ -26,7 +29,27 @@ namespace Swifty.Extensions
 
         public static void ConfigureRepositories(this IServiceCollection serviceCollection)
         {
-            
+            serviceCollection.AddSingleton<SwiftyRepository<Admin>, AdminRepository>();
+            serviceCollection.AddSingleton<SwiftyRepository<User>, UserRepository>();
+
+            serviceCollection.AddSingleton<SwiftyRepository<SkillArea>, SkillAreaRepository>();
+            serviceCollection.AddSingleton<SwiftyRepository<SkillLevel>, SkillLevelRepository>();
+            serviceCollection.AddSingleton<SwiftyRepository<Skill>, SkillRepository>();
+            serviceCollection.AddSingleton<SwiftyRepository<SkillSet>, SkillSetRepository>();
+            serviceCollection.AddSingleton<SwiftyRepository<SkillSetSkillLink>, SkillSetSkillLinkRepository>();
+            serviceCollection.AddSingleton<SwiftyRepository<SkillSnapshot>, SkillSnapshotRepository>();
+        }
+
+        public static void ConfigureServices(this IServiceCollection serviceCollection)
+        {
+            serviceCollection.AddSingleton<AdminService>();
+            serviceCollection.AddSingleton<UserService>();
+            serviceCollection.AddSingleton<SkillAreaService>();
+            serviceCollection.AddSingleton<SkillLevelService>();
+            serviceCollection.AddSingleton<SkillService>();
+            serviceCollection.AddSingleton<SkillSetService>();
+            serviceCollection.AddSingleton<SkillSetSkillLinkService>();
+            serviceCollection.AddSingleton<SkillSnapshotService>();
         }
 
         public static void ConfigureAuthorisation(this IServiceCollection serviceCollection, IConfiguration configuration)
@@ -46,6 +69,8 @@ namespace Swifty.Extensions
                 options.SaveTokens = true;
                 options.GetClaimsFromUserInfoEndpoint = true;
             });
+
+            serviceCollection.AddSingleton<IAuthorizationHandler, IsAdminHandler>();
 
             serviceCollection.AddAuthorization(options =>
             {
