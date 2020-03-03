@@ -9,7 +9,6 @@ using Microsoft.Extensions.Logging;
 
 namespace Swifty.Pages
 {
-    [Authorize(Policy = "IsAdmin")]
     public class PrivacyModel : PageModel
     {
         private readonly ILogger<PrivacyModel> _logger;
