@@ -6,24 +6,24 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Swifty.Core.Entities;
 using Swifty.Data.Context;
 using Swifty.Data.Repositories;
+using Entities = Swifty.Core.Entities;
 
-namespace Swifty.Web
+namespace Swifty.Web.Pages.Setup.SkillLevel
 {
     [Authorize(Policy = "IsAdmin")]
     public class DeleteModel : PageModel
     {
-        private readonly SwiftyRepository<SkillLevel> swiftyRepository;
+        private readonly SwiftyRepository<Entities.SkillLevel> swiftyRepository;
 
-        public DeleteModel(SwiftyRepository<SkillLevel> swiftyRepository)
+        public DeleteModel(SwiftyRepository<Entities.SkillLevel> swiftyRepository)
         {
             this.swiftyRepository = swiftyRepository;
         }
 
         [BindProperty]
-        public SkillLevel SkillLevel { get; set; }
+        public Entities.SkillLevel SkillLevel { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

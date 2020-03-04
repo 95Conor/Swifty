@@ -6,18 +6,18 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Swifty.Core.Entities;
 using Swifty.Data.Context;
 using Swifty.Data.Repositories;
+using Entities = Swifty.Core.Entities;
 
-namespace Swifty.Web
+namespace Swifty.Web.Pages.Setup.SkillLevel
 {
     [Authorize(Policy = "IsAdmin")]
     public class CreateModel : PageModel
     {
-        private readonly SwiftyRepository<SkillLevel> swiftyRepository;
+        private readonly SwiftyRepository<Entities.SkillLevel> swiftyRepository;
 
-        public CreateModel(SwiftyRepository<SkillLevel> swiftyRepository)
+        public CreateModel(SwiftyRepository<Entities.SkillLevel> swiftyRepository)
         {
             this.swiftyRepository = swiftyRepository;
         }
@@ -28,7 +28,7 @@ namespace Swifty.Web
         }
 
         [BindProperty]
-        public SkillLevel SkillLevel { get; set; }
+        public Entities.SkillLevel SkillLevel { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {

@@ -6,23 +6,23 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Swifty.Core.Entities;
 using Swifty.Data.Context;
 using Swifty.Data.Repositories;
+using Entities = Swifty.Core.Entities;
 
-namespace Swifty.Web
+namespace Swifty.Web.Pages.Setup.SkillLevel
 {
     [Authorize(Policy = "IsAdmin")]
     public class IndexModel : PageModel
     {
-        private readonly SwiftyRepository<SkillLevel> swiftyRepository;
+        private readonly SwiftyRepository<Entities.SkillLevel> swiftyRepository;
 
-        public IndexModel(SwiftyRepository<SkillLevel> swiftyRepository)
+        public IndexModel(SwiftyRepository<Entities.SkillLevel> swiftyRepository)
         {
             this.swiftyRepository = swiftyRepository;
         }
 
-        public List<SkillLevel> AllSkillLevels { get; set; }
+        public List<Entities.SkillLevel> AllSkillLevels { get; set; }
 
         public async Task OnGetAsync()
         {
