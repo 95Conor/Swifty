@@ -26,7 +26,6 @@
 
   <ItemGroup>
     <Folder Include="Pages\Setup\Skill\" />
-    <Folder Include="Pages\Setup\SkillArea\" />
   </ItemGroup>
 
 

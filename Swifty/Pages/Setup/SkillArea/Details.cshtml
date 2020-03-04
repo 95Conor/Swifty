@@ -1,0 +1,25 @@
+﻿@page
+@model Swifty.Web.Pages.Setup.SkillArea.DetailsModel
+
+@{
+    ViewData["Title"] = "Skill Areas - Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Skill Area</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SkillArea.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SkillArea.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.SkillArea.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
