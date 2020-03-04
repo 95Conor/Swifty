@@ -3,3 +3,6 @@ Swifty DB User: swiftylogin
 Swifty DB Pwrd: Swifty123-()
 
 - Probably want to add IsArchived to Skill so we can archive skills but they can still be seen in snapshots
+
+- Dbcontext.savechanges in the repository base classes is causing admins to save unencrypted - need to actually encrypt and decrypt the values rather than on save/load only?
+- Or explicitly have a decrypted name property which just gets and decrypts, idk
