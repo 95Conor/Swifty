@@ -33,32 +33,5 @@ namespace Swifty.Data.Repositories
 
             await base.UpdateAsync(entity);
         }
-
-        public override async Task<List<Admin>> ListAllAsync()
-        {
-            var entities = await base.ListAllAsync();
-
-            foreach (var entity in entities)
-            {
-                if (!string.IsNullOrWhiteSpace(entity.Email))
-                {
-                    entity.Email = EncryptionHelper.Decrypt(entity.Email);
-                }
-            }
-
-            return entities;
-        }
-
-        public override async Task<Admin> GetByIdAsync(int id)
-        {
-            var entity = await base.GetByIdAsync(id);
-
-            if (!string.IsNullOrWhiteSpace(entity.Email))
-            {
-                entity.Email = EncryptionHelper.Decrypt(entity.Email);
-            }
-
-            return entity;
-        }
     }
 }

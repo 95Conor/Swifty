@@ -6,6 +6,7 @@ using Swifty.Core.Entities;
 using Swifty.Data.Repositories;
 using System.Threading.Tasks;
 using System.Linq;
+using Swifty.Core.Helpers;
 
 namespace Swifty.Data.Services
 {
@@ -27,7 +28,7 @@ namespace Swifty.Data.Services
 
             var adminEntities = await adminRepository.ListAllAsync();
 
-            if (adminEntities != null && adminEntities.FirstOrDefault(x => x.Email.ToLower() == email.ToLower()) != null)
+            if (adminEntities != null && adminEntities.FirstOrDefault(x => EncryptionHelper.Decrypt(x.Email).ToLower() == email.ToLower()) != null)
             {
                 return true;
             }
