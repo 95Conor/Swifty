@@ -6,10 +6,12 @@ using Swifty.Data.Contracts;
 using Swifty.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using Swifty.Core.Contracts.Entities;
+using Swifty.Core.Entities;
 
 namespace Swifty.Data.Repositories
 {
-    public class SwiftyRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
+    public class SwiftyRepository<TEntity> : IBaseRepository<TEntity> where TEntity : EntityBase
     {
         private readonly SwiftyContext dbContext;
 

@@ -7,14 +7,8 @@ using Swifty.Data.Context;
 
 namespace Swifty.Data.Repositories
 {
-    public class SkillRepository : SwiftyRepository<Skill>
+    public class SkillRepository : SwiftyArchiveableRepository<Skill>
     {
         public SkillRepository(SwiftyContext context) : base(context) { }
-
-        public override Task DeleteAsync(Skill entity)
-        {
-            entity.IsArchived = true;
-            return base.UpdateAsync(entity);
-        }
     }
 }

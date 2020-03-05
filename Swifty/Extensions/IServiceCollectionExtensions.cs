@@ -34,7 +34,7 @@ namespace Swifty.Extensions
                                  
             serviceCollection.AddTransient<SwiftyRepository<SkillArea>, SkillAreaRepository>();
             serviceCollection.AddTransient<SwiftyRepository<SkillLevel>, SkillLevelRepository>();
-            serviceCollection.AddTransient<SwiftyRepository<Skill>, SkillRepository>();
+            serviceCollection.AddTransient<SwiftyArchiveableRepository<Skill>, SkillRepository>();
             serviceCollection.AddTransient<SwiftyRepository<SkillSet>, SkillSetRepository>();
             serviceCollection.AddTransient<SwiftyRepository<SkillSetSkillLink>, SkillSetSkillLinkRepository>();
             serviceCollection.AddTransient<SwiftyRepository<SkillSnapshot>, SkillSnapshotRepository>();
