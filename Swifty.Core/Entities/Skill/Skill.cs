@@ -11,6 +11,8 @@ namespace Swifty.Core.Entities
 
         public string Detail { get; set; }
 
+        public bool IsArchived { get; set; }
+
         public SkillLevel Level { get; set; }
 
         public SkillArea Area { get; set; }
