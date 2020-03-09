@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 using Swifty.Data.Services;
 using Swifty.Core.Entities;
 using Swifty.Data.Contracts.Repositories;
+using Swifty.Data.Contracts.Services;
 
 namespace Swifty.Extensions
 {
@@ -42,14 +43,14 @@ namespace Swifty.Extensions
 
         public static void ConfigureServices(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddTransient<AdminService>();
-            serviceCollection.AddTransient<UserService>();
-            serviceCollection.AddTransient<SkillAreaService>();
-            serviceCollection.AddTransient<SkillLevelService>();
-            serviceCollection.AddTransient<SkillService>();
-            serviceCollection.AddTransient<SkillSetService>();
-            serviceCollection.AddTransient<SkillSetSkillLinkService>();
-            serviceCollection.AddTransient<SkillSnapshotService>();
+            serviceCollection.AddTransient<IAdminService<Admin>, AdminService>();
+            serviceCollection.AddTransient<IUserService<User>, UserService>();
+            serviceCollection.AddTransient<ISkillAreaService<SkillArea>, SkillAreaService>();
+            serviceCollection.AddTransient<ISkillLevelService<SkillLevel>, SkillLevelService>();
+            serviceCollection.AddTransient<ISkillService<Skill>, SkillService>();
+            serviceCollection.AddTransient<ISkillSetService<SkillSet>, SkillSetService>();
+            serviceCollection.AddTransient<ISkillSetSkillLinkService<SkillSetSkillLink>, SkillSetSkillLinkService>();
+            serviceCollection.AddTransient<ISkillSnapshotService<SkillSnapshot>, SkillSnapshotService>();
         }
 
         public static void ConfigureAuthorisation(this IServiceCollection serviceCollection, IConfiguration configuration)

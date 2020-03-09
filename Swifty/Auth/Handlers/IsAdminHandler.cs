@@ -4,6 +4,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
+using Swifty.Core.Entities;
+using Swifty.Data.Contracts.Services;
 using Swifty.Data.Services;
 
 namespace Swifty.Web.Auth
@@ -11,9 +13,9 @@ namespace Swifty.Web.Auth
     public class IsAdminHandler : AuthorizationHandler<IsAdminRequirement>
     {
         private readonly IConfiguration configuration;
-        private readonly AdminService adminService;
+        private readonly IAdminService<Admin> adminService;
 
-        public IsAdminHandler(IConfiguration configuration, AdminService adminService)
+        public IsAdminHandler(IConfiguration configuration, IAdminService<Admin> adminService)
         {
             this.configuration = configuration;
             this.adminService = adminService;

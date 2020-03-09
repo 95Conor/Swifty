@@ -5,9 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using Swifty.Data.Context;
-using Swifty.Data.Repositories;
+using Swifty.Data.Contracts.Repositories;
 using Entities = Swifty.Core.Entities;
 
 namespace Swifty.Web.Pages.Setup.SkillArea
@@ -15,9 +13,9 @@ namespace Swifty.Web.Pages.Setup.SkillArea
     [Authorize(Policy = "IsAdmin")]
     public class DetailsModel : PageModel
     {
-        private readonly SwiftyRepository<Entities.SkillArea> swiftyRepository;
+        private readonly IBaseRepository<Entities.SkillArea> swiftyRepository;
 
-        public DetailsModel(SwiftyRepository<Entities.SkillArea> swiftyRepository)
+        public DetailsModel(IBaseRepository<Entities.SkillArea> swiftyRepository)
         {
             this.swiftyRepository = swiftyRepository;
         }

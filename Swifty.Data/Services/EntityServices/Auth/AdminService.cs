@@ -11,7 +11,7 @@ using Swifty.Data.Contracts.Repositories;
 
 namespace Swifty.Data.Services
 {
-    public class AdminService : IEntityService<Admin>
+    public class AdminService : IAdminService<Admin>
     {
         private readonly IBaseRepository<Admin> adminRepository;
 

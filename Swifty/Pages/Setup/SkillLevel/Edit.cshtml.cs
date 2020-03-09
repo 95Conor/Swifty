@@ -5,10 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Swifty.Data.Context;
-using Swifty.Data.Repositories;
+using Swifty.Data.Contracts.Repositories;
 using Entities = Swifty.Core.Entities;
 
 namespace Swifty.Web.Pages.Setup.SkillLevel
@@ -16,9 +13,9 @@ namespace Swifty.Web.Pages.Setup.SkillLevel
     [Authorize(Policy = "IsAdmin")]
     public class EditModel : PageModel
     {
-        private readonly SwiftyRepository<Entities.SkillLevel> swiftyRepository;
+        private readonly IBaseRepository<Entities.SkillLevel> swiftyRepository;
 
-        public EditModel(SwiftyRepository<Entities.SkillLevel> swiftyRepository)
+        public EditModel(IBaseRepository<Entities.SkillLevel> swiftyRepository)
         {
             this.swiftyRepository = swiftyRepository;
         }

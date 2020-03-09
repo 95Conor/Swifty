@@ -6,7 +6,7 @@ using Swifty.Core.Entities;
 
 namespace Swifty.Data.Services
 {
-    public class UserService : IEntityService<User>
+    public class UserService : IUserService<User>
     {
     }
 }
