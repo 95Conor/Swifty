@@ -15,6 +15,8 @@ namespace Swifty.Data.EntityConfiguration
 
             builder.Property(skillArea => skillArea.Name)
                     .IsRequired();
+
+            builder.Property(skillArea => skillArea.IsArchived).HasDefaultValue(false);
         }
     }
 }

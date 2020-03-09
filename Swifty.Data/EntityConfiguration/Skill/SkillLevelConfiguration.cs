@@ -15,6 +15,8 @@ namespace Swifty.Data.EntityConfiguration
 
             builder.Property(skillLevel => skillLevel.Value)
                     .IsRequired();
+
+            builder.Property(skillLevel => skillLevel.IsArchived).HasDefaultValue(false);
         }
     }
 }
