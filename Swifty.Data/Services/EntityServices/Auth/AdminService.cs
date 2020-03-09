@@ -15,7 +15,7 @@ namespace Swifty.Data.Services
     {
         private readonly IBaseRepository<Admin> adminRepository;
 
-        public AdminService(SwiftyRepository<Admin> adminRepository)
+        public AdminService(IBaseRepository<Admin> adminRepository)
         {
             this.adminRepository = adminRepository;
         }
