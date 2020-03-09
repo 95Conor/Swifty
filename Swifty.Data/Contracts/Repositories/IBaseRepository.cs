@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Swifty.Data.Contracts
+namespace Swifty.Data.Contracts.Repositories
 {
     public interface IBaseRepository<TEntity> : IBaseReadRepository<TEntity> where TEntity : class, IEntityBase
     {

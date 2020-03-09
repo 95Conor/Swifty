@@ -7,12 +7,13 @@ using Swifty.Data.Repositories;
 using System.Threading.Tasks;
 using System.Linq;
 using Swifty.Core.Helpers;
+using Swifty.Data.Contracts.Repositories;
 
 namespace Swifty.Data.Services
 {
     public class AdminService : IEntityService<Admin>
     {
-        private readonly SwiftyRepository<Admin> adminRepository;
+        private readonly IBaseRepository<Admin> adminRepository;
 
         public AdminService(SwiftyRepository<Admin> adminRepository)
         {

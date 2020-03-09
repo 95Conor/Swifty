@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Swifty.Data.Contracts;
 using Swifty.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using Swifty.Core.Contracts.Entities;
-using Swifty.Core.Entities;
+using Swifty.Data.Contracts.Repositories;
 
 namespace Swifty.Data.Repositories
 {

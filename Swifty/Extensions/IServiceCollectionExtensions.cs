@@ -6,13 +6,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Swifty.Data.Context;
-using Swifty.Data.Contracts;
 using Swifty.Data.Repositories;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Swifty.Web.Auth;
 using Microsoft.AspNetCore.Authorization;
 using Swifty.Data.Services;
 using Swifty.Core.Entities;
+using Swifty.Data.Contracts.Repositories;
 
 namespace Swifty.Extensions
 {
@@ -29,15 +29,15 @@ namespace Swifty.Extensions
 
         public static void ConfigureRepositories(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddTransient<SwiftyRepository<Admin>, AdminRepository>();
-            serviceCollection.AddTransient<SwiftyRepository<User>, UserRepository>();
-                                 
-            serviceCollection.AddTransient<SwiftyRepository<SkillArea>, SkillAreaRepository>();
-            serviceCollection.AddTransient<SwiftyRepository<SkillLevel>, SkillLevelRepository>();
-            serviceCollection.AddTransient<SwiftyArchiveableRepository<Skill>, SkillRepository>();
-            serviceCollection.AddTransient<SwiftyRepository<SkillSet>, SkillSetRepository>();
-            serviceCollection.AddTransient<SwiftyRepository<SkillSetSkillLink>, SkillSetSkillLinkRepository>();
-            serviceCollection.AddTransient<SwiftyRepository<SkillSnapshot>, SkillSnapshotRepository>();
+            serviceCollection.AddTransient<IBaseRepository<Admin>, AdminRepository>();
+            serviceCollection.AddTransient<IBaseRepository<User>, UserRepository>();
+
+            serviceCollection.AddTransient<IBaseRepository<SkillArea>, SkillAreaRepository>();
+            serviceCollection.AddTransient<IBaseRepository<SkillLevel>, SkillLevelRepository>();
+            serviceCollection.AddTransient<IBaseArchiveableRepository<Skill>, SkillRepository>();
+            serviceCollection.AddTransient<IBaseRepository<SkillSet>, SkillSetRepository>();
+            serviceCollection.AddTransient<IBaseRepository<SkillSetSkillLink>, SkillSetSkillLinkRepository>();
+            serviceCollection.AddTransient<IBaseRepository<SkillSnapshot>, SkillSnapshotRepository>();
         }
 
         public static void ConfigureServices(this IServiceCollection serviceCollection)
