@@ -6,7 +6,7 @@ using Swifty.Core.Entities;
 
 namespace Swifty.Data.Services
 {
-    public class SkillLevelService : IEntityService<SkillLevel>
+    public class SkillLevelService : ISkillLevelService<SkillLevel>
     {
     }
 }

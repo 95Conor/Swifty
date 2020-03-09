@@ -5,7 +5,7 @@ using Swifty.Core.Contracts.Entities;
 
 namespace Swifty.Data.Contracts.Services
 {
-    public class IEntityService<TEntity> where TEntity : IEntityBase
+    public interface IEntityService<TEntity> where TEntity : class, IEntityBase
     {
     }
 }

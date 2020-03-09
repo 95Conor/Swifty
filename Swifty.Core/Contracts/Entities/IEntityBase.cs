@@ -6,5 +6,6 @@ namespace Swifty.Core.Contracts.Entities
 {
     public interface IEntityBase
     {
+        public int Id { get; set; }
     }
 }
