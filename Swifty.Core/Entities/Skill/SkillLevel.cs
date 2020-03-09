@@ -5,9 +5,11 @@ using Swifty.Core.Contracts.Entities;
 
 namespace Swifty.Core.Entities
 {
-    public class SkillLevel : IEntityBase
+    public class SkillLevel : IArchiveableEntity
     {
         public int Id { get; set; }
+
+        public bool IsArchived { get; set; }
 
         public int Value { get; set; }
     }

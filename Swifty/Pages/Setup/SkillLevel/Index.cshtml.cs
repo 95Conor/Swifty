@@ -12,9 +12,9 @@ namespace Swifty.Web.Pages.Setup.SkillLevel
     [Authorize(Policy = "IsAdmin")]
     public class IndexModel : PageModel
     {
-        private readonly IBaseRepository<Entities.SkillLevel> swiftyRepository;
+        private readonly IBaseArchiveableRepository<Entities.SkillLevel> swiftyRepository;
 
-        public IndexModel(IBaseRepository<Entities.SkillLevel> swiftyRepository)
+        public IndexModel(IBaseArchiveableRepository<Entities.SkillLevel> swiftyRepository)
         {
             this.swiftyRepository = swiftyRepository;
         }

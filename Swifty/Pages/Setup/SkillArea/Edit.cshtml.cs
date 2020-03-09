@@ -13,9 +13,9 @@ namespace Swifty.Web.Pages.Setup.SkillArea
     [Authorize(Policy = "IsAdmin")]
     public class EditModel : PageModel
     {
-        private readonly IBaseRepository<Entities.SkillArea> swiftyRepository;
+        private readonly IBaseArchiveableRepository<Entities.SkillArea> swiftyRepository;
 
-        public EditModel(IBaseRepository<Entities.SkillArea> swiftyRepository)
+        public EditModel(IBaseArchiveableRepository<Entities.SkillArea> swiftyRepository)
         {
             this.swiftyRepository = swiftyRepository;
         }

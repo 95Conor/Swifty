@@ -6,7 +6,7 @@ using Swifty.Data.Context;
 
 namespace Swifty.Data.Repositories
 {
-    public class SkillAreaRepository : SwiftyRepository<SkillArea>
+    public class SkillAreaRepository : SwiftyArchiveableRepository<SkillArea>
     {
         public SkillAreaRepository(SwiftyContext context) : base(context) { }
     }

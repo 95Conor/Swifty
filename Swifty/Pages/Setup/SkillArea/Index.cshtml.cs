@@ -13,9 +13,9 @@ namespace Swifty.Web.Pages.Setup.SkillArea
     [Authorize(Policy = "IsAdmin")]
     public class IndexModel : PageModel
     {
-        private readonly IBaseRepository<Entities.SkillArea> swiftyRepository;
+        private readonly IBaseArchiveableRepository<Entities.SkillArea> swiftyRepository;
 
-        public IndexModel(IBaseRepository<Entities.SkillArea> swiftyRepository)
+        public IndexModel(IBaseArchiveableRepository<Entities.SkillArea> swiftyRepository)
         {
             this.swiftyRepository = swiftyRepository;
         }

@@ -13,9 +13,9 @@ namespace Swifty.Web.Pages.Setup.SkillLevel
     [Authorize(Policy = "IsAdmin")]
     public class EditModel : PageModel
     {
-        private readonly IBaseRepository<Entities.SkillLevel> swiftyRepository;
+        private readonly IBaseArchiveableRepository<Entities.SkillLevel> swiftyRepository;
 
-        public EditModel(IBaseRepository<Entities.SkillLevel> swiftyRepository)
+        public EditModel(IBaseArchiveableRepository<Entities.SkillLevel> swiftyRepository)
         {
             this.swiftyRepository = swiftyRepository;
         }

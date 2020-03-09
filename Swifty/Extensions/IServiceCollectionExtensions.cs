@@ -33,8 +33,8 @@ namespace Swifty.Extensions
             serviceCollection.AddTransient<IBaseRepository<Admin>, AdminRepository>();
             serviceCollection.AddTransient<IBaseRepository<User>, UserRepository>();
 
-            serviceCollection.AddTransient<IBaseRepository<SkillArea>, SkillAreaRepository>();
-            serviceCollection.AddTransient<IBaseRepository<SkillLevel>, SkillLevelRepository>();
+            serviceCollection.AddTransient<IBaseArchiveableRepository<SkillArea>, SkillAreaRepository>();
+            serviceCollection.AddTransient<IBaseArchiveableRepository<SkillLevel>, SkillLevelRepository>();
             serviceCollection.AddTransient<IBaseArchiveableRepository<Skill>, SkillRepository>();
             serviceCollection.AddTransient<IBaseRepository<SkillSet>, SkillSetRepository>();
             serviceCollection.AddTransient<IBaseRepository<SkillSetSkillLink>, SkillSetSkillLinkRepository>();

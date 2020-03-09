@@ -13,9 +13,9 @@ namespace Swifty.Web.Pages.Setup.SkillArea
     [Authorize(Policy = "IsAdmin")]
     public class DeleteModel : PageModel
     {
-        private readonly IBaseRepository<Entities.SkillArea> swiftyRepository;
+        private readonly IBaseArchiveableRepository<Entities.SkillArea> swiftyRepository;
 
-        public DeleteModel(IBaseRepository<Entities.SkillArea> swiftyRepository)
+        public DeleteModel(IBaseArchiveableRepository<Entities.SkillArea> swiftyRepository)
         {
             this.swiftyRepository = swiftyRepository;
         }
