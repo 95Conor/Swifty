@@ -5,7 +5,7 @@ using Swifty.Core.Contracts.Entities;
 
 namespace Swifty.Core.Entities
 {
-    public class SkillLevel : EntityBase
+    public class SkillLevel : IEntityBase
     {
         public int Id { get; set; }
 

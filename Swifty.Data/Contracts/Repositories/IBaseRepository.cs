@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Swifty.Data.Contracts
 {
-    public interface IBaseRepository<TEntity> : IBaseReadRepository<TEntity> where TEntity : EntityBase
+    public interface IBaseRepository<TEntity> : IBaseReadRepository<TEntity> where TEntity : class, IEntityBase
     {
         public Task<TEntity> AddAsync(TEntity entity);
 

@@ -2,7 +2,9 @@
 Swifty DB User: swiftylogin
 Swifty DB Pwrd: Swifty123-()
 
-- Probably want to add IsArchived to Skill so we can archive skills but they can still be seen in snapshots
-
-- Dbcontext.savechanges in the repository base classes is causing admins to save unencrypted - need to actually encrypt and decrypt the values rather than on save/load only?
-- Or explicitly have a decrypted name property which just gets and decrypts, idk
+- Admin Service should also inherit from an IAdminService with outline of what it does - anything using this service via DI can then be coded to the contract rather than implementation
+- Should be able to remove EntityBase class - just make base level repo inherit from class, IEntityBase rather than EntityBase, follow it up the chain then
+- Make skill Level and skill area archiveable (follow same pattern)
+- Make the setup page for skills
+- Make a setup link in the homepage
+- Design the nav bar with everything we want in there including the setup links above

@@ -11,7 +11,7 @@ using Swifty.Core.Entities;
 
 namespace Swifty.Data.Repositories
 {
-    public class SwiftyRepository<TEntity> : IBaseRepository<TEntity> where TEntity : EntityBase
+    public class SwiftyRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class, IEntityBase
     {
         private readonly SwiftyContext dbContext;
 

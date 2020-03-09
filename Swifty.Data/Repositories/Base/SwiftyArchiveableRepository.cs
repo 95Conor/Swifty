@@ -1,6 +1,5 @@
 ﻿using Swifty.Core.Contracts.Entities;
 using Swifty.Core.Entities;
-using Swifty.Core.Entities.Base;
 using Swifty.Data.Context;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Swifty.Data.Repositories
 {
-    public class SwiftyArchiveableRepository<TEntity> : SwiftyRepository<TEntity> where TEntity : ArchiveableEntityBase
+    public class SwiftyArchiveableRepository<TEntity> : SwiftyRepository<TEntity> where TEntity : class, IArchiveableEntity
     {
         public SwiftyArchiveableRepository(SwiftyContext dbContext) : base(dbContext)
         {

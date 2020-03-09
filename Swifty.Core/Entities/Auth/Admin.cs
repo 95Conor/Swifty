@@ -5,7 +5,7 @@ using Swifty.Core.Contracts.Entities;
 
 namespace Swifty.Core.Entities
 {
-    public class Admin : EntityBase
+    public class Admin : IEntityBase
     {
         public int Id { get; set; }
 

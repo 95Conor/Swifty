@@ -3,10 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Swifty.Core.Contracts.Entities;
 
 namespace Swifty.Data.Contracts
 {
-    public interface IBaseReadRepository<TEntity> where TEntity : EntityBase
+    public interface IBaseReadRepository<TEntity> where TEntity : class, IEntityBase
     {
         public Task<TEntity> GetByIdAsync(int id);
 
