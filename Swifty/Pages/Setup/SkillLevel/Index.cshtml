@@ -16,6 +16,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.AllSkillLevels[0].Value)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AllSkillLevels[0].IsArchived)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -25,6 +28,9 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Value)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsArchived)
                 </td>
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
