@@ -1,9 +1,15 @@
-﻿Swifty DB Name: swifty
+﻿----------------------
+Credentials:
+----------------------
+
+Swifty DB Name: swifty
 Swifty DB User: swiftylogin
 Swifty DB Pwrd: Swifty123-()
 
-- Add a 'ListAllNonArchivedAsync' to SwiftyArchiveableRepository and inherited interface
-	- Add a custom warning if possible to the ListAllAsync function in SwiftyArchiveableRepository to warn that archived results are included
+----------------------
+Current ToDo:
+----------------------
+
 
 - Make the setup page for skills
 - Add 'Archived' flag to details/edit pages for skill, skill level, skill area
@@ -13,3 +19,10 @@ Swifty DB Pwrd: Swifty123-()
 
 - Make setup pages for Admins
 	- Bear in mind this needs to decrypt/encrypt data too
+
+
+----------------------
+Future notes/thoughts:
+----------------------
+
+- When marking a new snapshot, admins should have ability to load in a previous snapshot (so they can go from there). Would need to clone the existing one, not actually load it by reference.
