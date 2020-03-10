@@ -4,8 +4,10 @@ using Swifty.Data.Context;
 using Swifty.Data.Contracts.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Swifty.Core.Attributes;
 
 namespace Swifty.Data.Repositories
 {
@@ -24,6 +26,24 @@ namespace Swifty.Data.Repositories
         {
             entity.IsArchived = true;
             return base.UpdateAsync(entity);
+        }
+
+        public async Task<List<TEntity>> ListAllNonArchivedAsync()
+        {
+            var entities = await base.ListAllAsync();
+
+            if (entities.Any())
+            {
+                entities = entities.Where(x => !x.IsArchived).ToList();
+            }
+
+            return entities;
+        }
+
+        [ListAllArchivedWarning]
+        public override async Task<List<TEntity>> ListAllAsync()
+        {
+            return await base.ListAllAsync();
         }
     }
 }

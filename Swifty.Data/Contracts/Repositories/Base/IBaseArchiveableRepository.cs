@@ -11,5 +11,7 @@ namespace Swifty.Data.Contracts.Repositories
         public new Task DeleteAsync(TEntity entity);
 
         public Task ArchiveAsync(TEntity entity);
+
+        public Task<List<TEntity>> ListAllNonArchivedAsync();
     }
 }
