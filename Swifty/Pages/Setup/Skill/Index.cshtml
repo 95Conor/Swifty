@@ -1,0 +1,49 @@
+﻿@page
+@model Swifty.Web.Pages.Setup.Skill.IndexModel
+
+@{
+    ViewData["Title"] = "Skills - Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AllSkills[0].Detail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AllSkills[0].IsArchived)
+            </th>
+
+            @* ToDo: Skill.Level and Skill.Area *@
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.AllSkills)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Detail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsArchived)
+                </td>
+
+                @* ToDo: Skill.Level and Skill.Area *@
+
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

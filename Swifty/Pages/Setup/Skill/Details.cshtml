@@ -1,0 +1,33 @@
+﻿@page
+@model Swifty.Web.Pages.Setup.Skill.DetailsModel
+
+@{
+    ViewData["Title"] = "Skills - Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Skill</h4>
+    <hr />
+    <dl class="row">
+        @* ToDo: Load Skill.Area and Skill.Level in here *@
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Skill.Detail)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Skill.Detail)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Skill.IsArchived)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Skill.IsArchived)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Skill.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
