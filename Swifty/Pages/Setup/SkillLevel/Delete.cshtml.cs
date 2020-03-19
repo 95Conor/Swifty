@@ -13,11 +13,11 @@ namespace Swifty.Web.Pages.Setup.SkillLevel
     [Authorize(Policy = "IsAdmin")]
     public class DeleteModel : PageModel
     {
-        private readonly IBaseArchiveableRepository<Entities.SkillLevel> swiftyRepository;
+        private readonly IBaseArchiveableRepository<Entities.SkillLevel> _skillLevelRepository;
 
-        public DeleteModel(IBaseArchiveableRepository<Entities.SkillLevel> swiftyRepository)
+        public DeleteModel(IBaseArchiveableRepository<Entities.SkillLevel> skillLevelRepository)
         {
-            this.swiftyRepository = swiftyRepository;
+            _skillLevelRepository = skillLevelRepository;
         }
 
         [BindProperty]
@@ -30,7 +30,7 @@ namespace Swifty.Web.Pages.Setup.SkillLevel
                 return NotFound();
             }
 
-            SkillLevel = await swiftyRepository.GetByIdAsync(id.Value);
+            SkillLevel = await _skillLevelRepository.GetByIdAsync(id.Value);
 
             if (SkillLevel == null)
             {
@@ -46,11 +46,11 @@ namespace Swifty.Web.Pages.Setup.SkillLevel
                 return NotFound();
             }
 
-            SkillLevel = await swiftyRepository.GetByIdAsync(id.Value);
+            SkillLevel = await _skillLevelRepository.GetByIdAsync(id.Value);
 
             if (SkillLevel != null)
             {
-                await swiftyRepository.DeleteAsync(SkillLevel);
+                await _skillLevelRepository.DeleteAsync(SkillLevel);
             }
 
             return RedirectToPage("./Index");

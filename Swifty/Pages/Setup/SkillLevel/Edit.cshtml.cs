@@ -13,11 +13,11 @@ namespace Swifty.Web.Pages.Setup.SkillLevel
     [Authorize(Policy = "IsAdmin")]
     public class EditModel : PageModel
     {
-        private readonly IBaseArchiveableRepository<Entities.SkillLevel> swiftyRepository;
+        private readonly IBaseArchiveableRepository<Entities.SkillLevel> _skillLevelRepository;
 
-        public EditModel(IBaseArchiveableRepository<Entities.SkillLevel> swiftyRepository)
+        public EditModel(IBaseArchiveableRepository<Entities.SkillLevel> skillLevelRepository)
         {
-            this.swiftyRepository = swiftyRepository;
+            _skillLevelRepository = skillLevelRepository;
         }
 
         [BindProperty]
@@ -30,7 +30,7 @@ namespace Swifty.Web.Pages.Setup.SkillLevel
                 return NotFound();
             }
 
-            SkillLevel = await swiftyRepository.GetByIdAsync(id.Value);
+            SkillLevel = await _skillLevelRepository.GetByIdAsync(id.Value);
 
             if (SkillLevel == null)
             {
@@ -48,7 +48,7 @@ namespace Swifty.Web.Pages.Setup.SkillLevel
                 return Page();
             }
 
-            await swiftyRepository.UpdateAsync(SkillLevel);
+            await _skillLevelRepository.UpdateAsync(SkillLevel);
 
             return RedirectToPage("./Index");
         }

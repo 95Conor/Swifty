@@ -13,18 +13,18 @@ namespace Swifty.Web.Pages.Setup.SkillArea
     [Authorize(Policy = "IsAdmin")]
     public class IndexModel : PageModel
     {
-        private readonly IBaseArchiveableRepository<Entities.SkillArea> swiftyRepository;
+        private readonly IBaseArchiveableRepository<Entities.SkillArea> _skillAreaRepository;
 
-        public IndexModel(IBaseArchiveableRepository<Entities.SkillArea> swiftyRepository)
+        public IndexModel(IBaseArchiveableRepository<Entities.SkillArea> skillAreaRepository)
         {
-            this.swiftyRepository = swiftyRepository;
+            _skillAreaRepository = skillAreaRepository;
         }
 
         public List<Entities.SkillArea> AllSkillAreas { get; set; }
 
         public async Task OnGetAsync()
         {
-            AllSkillAreas = await swiftyRepository.ListAllAsync();
+            AllSkillAreas = await _skillAreaRepository.ListAllAsync();
         }
     }
 }

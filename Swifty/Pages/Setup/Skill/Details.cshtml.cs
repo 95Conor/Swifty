@@ -13,11 +13,11 @@ namespace Swifty.Web.Pages.Setup.Skill
     [Authorize(Policy = "IsAdmin")]
     public class DetailsModel : PageModel
     {
-        private readonly IBaseArchiveableRepository<Entities.Skill> swiftyRepository;
+        private readonly IBaseArchiveableRepository<Entities.Skill> _skillRepository;
 
-        public DetailsModel(IBaseArchiveableRepository<Entities.Skill> swiftyRepository)
+        public DetailsModel(IBaseArchiveableRepository<Entities.Skill> skillRepository)
         {
-            this.swiftyRepository = swiftyRepository;
+            _skillRepository = skillRepository;
         }
 
         public Entities.Skill Skill { get; set; }
@@ -29,7 +29,7 @@ namespace Swifty.Web.Pages.Setup.Skill
                 return NotFound();
             }
 
-            Skill = await swiftyRepository.GetByIdAsync(id.Value);
+            Skill = await _skillRepository.GetByIdAsync(id.Value);
 
             if (Skill == null)
             {

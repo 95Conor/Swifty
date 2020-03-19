@@ -13,11 +13,11 @@ namespace Swifty.Web.Pages.Setup.SkillArea
     [Authorize(Policy = "IsAdmin")]
     public class EditModel : PageModel
     {
-        private readonly IBaseArchiveableRepository<Entities.SkillArea> swiftyRepository;
+        private readonly IBaseArchiveableRepository<Entities.SkillArea> _skillAreaRepository;
 
-        public EditModel(IBaseArchiveableRepository<Entities.SkillArea> swiftyRepository)
+        public EditModel(IBaseArchiveableRepository<Entities.SkillArea> skillAreaRepository)
         {
-            this.swiftyRepository = swiftyRepository;
+            _skillAreaRepository = skillAreaRepository;
         }
 
         [BindProperty]
@@ -30,7 +30,7 @@ namespace Swifty.Web.Pages.Setup.SkillArea
                 return NotFound();
             }
 
-            SkillArea = await swiftyRepository.GetByIdAsync(id.Value);
+            SkillArea = await _skillAreaRepository.GetByIdAsync(id.Value);
 
             if (SkillArea == null)
             {
@@ -48,7 +48,7 @@ namespace Swifty.Web.Pages.Setup.SkillArea
                 return Page();
             }
 
-            await swiftyRepository.UpdateAsync(SkillArea);
+            await _skillAreaRepository.UpdateAsync(SkillArea);
 
             return RedirectToPage("./Index");
         }

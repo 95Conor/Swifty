@@ -13,11 +13,11 @@ namespace Swifty.Web.Pages.Setup.SkillArea
     [Authorize(Policy = "IsAdmin")]
     public class DeleteModel : PageModel
     {
-        private readonly IBaseArchiveableRepository<Entities.SkillArea> swiftyRepository;
+        private readonly IBaseArchiveableRepository<Entities.SkillArea> _skillAreaRepository;
 
-        public DeleteModel(IBaseArchiveableRepository<Entities.SkillArea> swiftyRepository)
+        public DeleteModel(IBaseArchiveableRepository<Entities.SkillArea> skillAreaRepository)
         {
-            this.swiftyRepository = swiftyRepository;
+            _skillAreaRepository = skillAreaRepository;
         }
 
         [BindProperty]
@@ -30,7 +30,7 @@ namespace Swifty.Web.Pages.Setup.SkillArea
                 return NotFound();
             }
 
-            SkillArea = await swiftyRepository.GetByIdAsync(id.Value);
+            SkillArea = await _skillAreaRepository.GetByIdAsync(id.Value);
 
             if (SkillArea == null)
             {
@@ -46,11 +46,11 @@ namespace Swifty.Web.Pages.Setup.SkillArea
                 return NotFound();
             }
 
-            SkillArea = await swiftyRepository.GetByIdAsync(id.Value);
+            SkillArea = await _skillAreaRepository.GetByIdAsync(id.Value);
 
             if (SkillArea != null)
             {
-                await swiftyRepository.DeleteAsync(SkillArea);
+                await _skillAreaRepository.DeleteAsync(SkillArea);
             }
 
             return RedirectToPage("./Index");
