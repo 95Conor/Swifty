@@ -25,7 +25,7 @@ namespace Swifty.Extensions
         public static void ConfigureDatabase(this IServiceCollection serviceCollection, IConfiguration configuration)
         {
             serviceCollection.AddDbContext<SwiftyContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("Swifty")));
+                options.UseSqlServer(configuration.GetConnectionString("Swifty")), ServiceLifetime.Transient);
         }
 
         public static void ConfigureRepositories(this IServiceCollection serviceCollection)
