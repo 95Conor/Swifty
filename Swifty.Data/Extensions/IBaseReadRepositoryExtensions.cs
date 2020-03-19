@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Swifty.Web.Extensions
+namespace Swifty.Data.Extensions
 {
     public static class IBaseReadRepositoryExtensions
     {
