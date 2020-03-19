@@ -18,6 +18,18 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Skill.Detail)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Skill.Area)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Skill.Area.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Skill.Level)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Skill.Level.Value)
+        </dd>
     </dl>
 
     <form method="post">
