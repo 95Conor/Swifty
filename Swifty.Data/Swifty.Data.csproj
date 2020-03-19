@@ -9,6 +9,8 @@
     <Compile Remove="Migrations\20200227180602_Auth.Designer.cs" />
     <Compile Remove="Migrations\20200305200242_OverridePropertyTest.cs" />
     <Compile Remove="Migrations\20200305200242_OverridePropertyTest.Designer.cs" />
+    <Compile Remove="Migrations\20200319165932_Skill_ForeignKeyImplementation.cs" />
+    <Compile Remove="Migrations\20200319165932_Skill_ForeignKeyImplementation.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
