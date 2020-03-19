@@ -14,13 +14,26 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            @* ToDo - Skill.Level, Skill.Area - should be dropdowns loaded from code behind, and saved properly when saved *@
-
+            <div class="form-group">
+                <label asp-for="Skill.Area" class="control-label"></label>
+                <select asp-for="Skill.SkillAreaId" asp-items="Model.SkillAreaSelectList.OrderBy(x => x.Text)" class="form-control">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="Skill.SkillAreaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Skill.Level" class="control-label"></label>
+                <select asp-for="Skill.SkillLevelId" asp-items="Model.SkillLevelSelectList.OrderBy(x => x.Text)" class="form-control">
+                    <option value="">-- Select --</option>
+                </select>
+                <span asp-validation-for="Skill.SkillLevelId" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="Skill.Detail" class="control-label"></label>
                 <input asp-for="Skill.Detail" class="form-control" />
                 <span asp-validation-for="Skill.Detail" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

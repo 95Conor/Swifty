@@ -15,10 +15,16 @@ namespace Swifty.Web.Pages.Setup.Skill
     public class IndexModel : PageModel
     {
         private readonly IBaseArchiveableRepository<Entities.Skill> _skillRepository;
+        private readonly IBaseArchiveableRepository<Entities.SkillArea> _skillAreaRepository;
+        private readonly IBaseArchiveableRepository<Entities.SkillLevel> _skillLevelRepository;
 
-        public IndexModel(IBaseArchiveableRepository<Entities.Skill> skillRepository)
+        public IndexModel(IBaseArchiveableRepository<Entities.Skill> skillRepository, 
+            IBaseArchiveableRepository<Entities.SkillArea> skillAreaRepository,
+            IBaseArchiveableRepository<Entities.SkillLevel> skillLevelRepository)
         {
             _skillRepository = skillRepository;
+            _skillAreaRepository = skillAreaRepository;
+            _skillLevelRepository = skillLevelRepository;
         }
 
         public List<Entities.Skill> AllSkills { get; set; }
@@ -26,22 +32,6 @@ namespace Swifty.Web.Pages.Setup.Skill
         public async Task OnGetAsync()
         {
             AllSkills = await _skillRepository.ListAllAsync();
-            await PopulateSelectListsAsync();
-        }
-
-        public SelectList SkillLevelSelectList { get; set; }
-
-        public SelectList SkillAreaSelectList { get; set; }
-
-        private async Task PopulateSelectListsAsync()
-        {
-            var skillLevelTask = swiftyRepository.BuildSelectListExcludeArchivedAsync(nameof(Entities.SkillLevel.Value));
-            var skillAreaTask = swiftyRepository.BuildSelectListExcludeArchivedAsync(nameof(Entities.SkillArea.Name));
-
-            await Task.WhenAll(skillLevelTask, skillAreaTask);
-
-            SkillLevelSelectList = skillLevelTask.Result;
-            SkillAreaSelectList = skillAreaTask.Result;
         }
     }
 }
