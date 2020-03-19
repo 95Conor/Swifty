@@ -10,8 +10,6 @@ Swifty DB Pwrd: Swifty123-()
 Current ToDo:
 ----------------------
 
-- Add 'Archived' flag to details/edit pages for skill, skill level, skill area
-- Make the setup page for skills
 - Finish off the setup page for skills so all relevant pages include skill level and skill area (need to add BuildSelectListAsync and probably service implementation to get names etc)
 
 - Make a setup link in the homepage
@@ -32,4 +30,12 @@ Future notes/thoughts:
 - SkillService should have GetAllBySkillAreaAndSkillLevel(SkillArea area, int SkillLevel), GetAllBySkillArea(SkillArea area), GetAllBySkillLevel(int SkillLevel)
 - When marking a new snapshot, admins should have ability to load in a previous snapshot (so they can go from there). Would need to clone the existing one, not actually load it by reference.
 - Skill Index screen should really be like the card output with option to edit, rather than a list of ALL of them. Or at least have tabs by skill level. That'll probably call service.
-- When everything is done and ready to show, put it up as a site somewhere and link to local DB (or copy DB) so it can be accessed via a URL instead of localhost/debugging
+
+
+----------------------
+
+When everything is done:
+
+----------------------
+
+- Put it up as a site somewhere and link to local DB (or copy DB) so it can be accessed via a URL instead of localhost/debugging
