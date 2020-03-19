@@ -10,17 +10,19 @@ Swifty DB Pwrd: Swifty123-()
 Current ToDo:
 ----------------------
 
-- Finish off the setup page for skills so all relevant pages include skill level and skill area (need to add BuildSelectListAsync and probably service implementation to get names etc)
-
 - Make a setup link in the homepage
 - Design the nav bar with everything we want in there including the setup links above
 
 - Make setup pages for Admins
 	- Bear in mind this needs to decrypt/encrypt data too
 
+- Could we just have an EXTENSION on the SkillSet repository which LOADS all of the SkillSetSkillLink and then loads the Skills entities and returns a list of Skills??
+
 - Before making anything further past setup, to do with skillsnapshots, try and create the skillsnapshot entity properly so we don't need the skillsnapshotskilllink entity.
 - If to no avail, maybe we at least rename this as it will be used everywhere, shorter is nicer?
 - Plan out architecture of skill marking/skill loading/skill snapshots before diving in
+	- SkillSetService and SkillService should have all the logic/functions whereby SkilLSetSkillLink objects are dealt with
+		- Could we just have an EXTENSION on the SkillSet repository which LOADS all of the SkillSetSkillLink and then loads the Skills entities and returns a list of Skills??
 
 
 ----------------------
@@ -33,9 +35,7 @@ Future notes/thoughts:
 
 
 ----------------------
-
 When everything is done:
-
 ----------------------
 
 - Put it up as a site somewhere and link to local DB (or copy DB) so it can be accessed via a URL instead of localhost/debugging
