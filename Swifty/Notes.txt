@@ -31,6 +31,9 @@ Future notes/thoughts:
 - SkillService should have GetAllBySkillAreaAndSkillLevel(SkillArea area, int SkillLevel), GetAllBySkillArea(SkillArea area), GetAllBySkillLevel(int SkillLevel)
 - When marking a new snapshot, admins should have ability to load in a previous snapshot (so they can go from there). Would need to clone the existing one, not actually load it by reference.
 - Skill Index screen should really be like the card output with option to edit, rather than a list of ALL of them. Or at least have tabs by skill level. That'll probably call service.
+- SkillSnapshot should maybe also have the Admin email saved against it so that it can be displayed, so a user knows who gave them that skillsnapshot, years down the line
+- SkillSnapshot may also have a notes string against it whereby the marker can add loads of notes and will then be displayed when the user sees the skillsnapshot? e.g. improve on this, do this, that.
+- When new SkillSnapshot is being made by admin, first it should let them select user, then post user ID - when page reloads it see's user ID query string so loads entire page for marking then
 
 ----------------------
 When everything is done:
