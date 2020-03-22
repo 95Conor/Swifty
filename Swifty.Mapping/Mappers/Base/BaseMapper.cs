@@ -5,17 +5,22 @@ using System.Text;
 
 namespace Swifty.Mapping.Mappers.Base
 {
-    public class BaseMapper : IBaseMapper
+    public abstract class BaseMapper<TSource, TDestination> : IBaseMapper<TSource, TDestination>
+        where TSource : class 
+        where TDestination : class
     {
-        public virtual TDestination Map<TSource, TDestination>(TSource source, TDestination destination)
-            where TSource : class
-            where TDestination : class
+
+        // Template Method pattern
+        public virtual TDestination Map(TSource source, TDestination destination)
         {
             MapEquivalentProperties(source, destination);
+            ConfigureMappingFor(source, destination);
             return destination;
         }
 
-        private void MapEquivalentProperties<TSource, TDestination>(TSource source, TDestination destination)
+        public abstract void ConfigureMappingFor(TSource source, TDestination destination);
+
+        private void MapEquivalentProperties(TSource source, TDestination destination)
         {
             var sourceProperties = source.GetType().GetProperties();
             var destinationProperties = destination.GetType().GetProperties();
