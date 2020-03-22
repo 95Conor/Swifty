@@ -4,13 +4,4 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Configuration\" />
-    <Folder Include="Mappers\ViewModels\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Swifty.Core\Swifty.Core.csproj" />
-  </ItemGroup>
-
 </Project>
