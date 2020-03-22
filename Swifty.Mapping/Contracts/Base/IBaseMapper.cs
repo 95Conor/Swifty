@@ -6,12 +6,8 @@ namespace Swifty.Mapping.Contracts.Base
 {
     public interface IBaseMapper
     {
-        public void MapFrom<TSource, TDestination>() 
-            where TSource : class 
-            where TDestination : class;
-
-        public void MapTo<TSource, TDestination>()
-            where TSource : class
-            where TDestination : class;
+        public TDestination Map<TSource, TDestination>(TSource source, TDestination destination)
+            where TDestination : class
+            where TSource : class;
     }
 }
