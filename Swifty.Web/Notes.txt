@@ -17,6 +17,8 @@ Current ToDo:
 
 - Create SkillBoard page
 
+- Implement some generic usage of the errors which can be recorded in the BaseViewModel
+
 - Create SkillBoard admin page (editable)
 
 - Make setup pages for Admins & Users
