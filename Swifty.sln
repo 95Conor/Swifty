@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Swifty.Web", "Swifty\Swifty.Web.csproj", "{DE81E1AB-0F1E-4D6C-9BF4-05F2BF441D85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Swifty.Web", "Swifty.Web\Swifty.Web.csproj", "{DE81E1AB-0F1E-4D6C-9BF4-05F2BF441D85}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Swifty.Data", "Swifty.Data\Swifty.Data.csproj", "{B6C06910-01A6-4794-81DF-5D5567846692}"
 EndProject
