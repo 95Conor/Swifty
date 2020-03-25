@@ -28,7 +28,7 @@ namespace Swifty.Data.Repositories
             return base.UpdateAsync(entity);
         }
 
-        public async Task<List<TEntity>> ListAllNonArchivedAsync()
+        public virtual async Task<List<TEntity>> ListAllNonArchivedAsync()
         {
             var entities = await base.ListAllAsync();
 

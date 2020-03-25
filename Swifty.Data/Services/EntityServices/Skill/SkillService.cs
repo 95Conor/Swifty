@@ -32,7 +32,7 @@ namespace Swifty.Data.Services
                 }
                 else
                 {
-                    toReturn.Add(skill.Area, new List<Skill>() { skill });
+                    toReturn.Add(skill.Area, new List<Skill>());
                 }
             }
 
@@ -55,7 +55,7 @@ namespace Swifty.Data.Services
                 {
                     if (!skill.Area.IsArchived)
                     {
-                        toReturn.Add(skill.Area, new List<Skill>());
+                        toReturn.Add(skill.Area, new List<Skill>() { skill });
                     }
                 }
             }

@@ -25,7 +25,23 @@ namespace Swifty.Data.Repositories
         {
             var allEntities = await base.ListAllAsync();
 
-            foreach (var entity in allEntities)
+            await PersistAreaAndLevels(allEntities);
+
+            return allEntities;
+        }
+
+        public override async Task<List<Skill>> ListAllNonArchivedAsync()
+        {
+            var allEntities = await base.ListAllNonArchivedAsync();
+
+            await PersistAreaAndLevels(allEntities);
+
+            return allEntities;
+        }
+
+        private async Task PersistAreaAndLevels(List<Skill> skills)
+        {
+            foreach (var entity in skills)
             {
                 try
                 {
@@ -37,8 +53,6 @@ namespace Swifty.Data.Repositories
                     throw (ex);
                 }
             }
-
-            return allEntities;
         }
 
         public override async Task<Skill> GetByIdAsync(int id)
