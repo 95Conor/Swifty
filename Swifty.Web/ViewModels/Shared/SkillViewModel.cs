@@ -13,6 +13,8 @@ namespace Swifty.Web.ViewModels.Shared
 
         public SkillLevelViewModel SkillLevel { get; set; }
 
+        public bool IsArchived { get; set; }
+
         public string Detail { get; set; }
     }
 }

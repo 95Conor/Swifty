@@ -9,6 +9,8 @@ namespace Swifty.Web.ViewModels.Shared
     {
         public int Id { get; set; }
 
+        public bool IsArchived { get; set; }
+
         public int Value { get; set; }
     }
 }
