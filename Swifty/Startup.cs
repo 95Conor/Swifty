@@ -36,6 +36,8 @@ namespace Swifty
             services.ConfigureRepositories();
 
             services.ConfigureServices();
+
+            services.ConfigureAutoMapper();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

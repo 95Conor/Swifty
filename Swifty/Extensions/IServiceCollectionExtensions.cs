@@ -14,6 +14,7 @@ using Swifty.Data.Services;
 using Swifty.Core.Entities;
 using Swifty.Data.Contracts.Repositories;
 using Swifty.Data.Contracts.Services;
+using AutoMapper;
 
 namespace Swifty.Extensions
 {
@@ -51,6 +52,11 @@ namespace Swifty.Extensions
             serviceCollection.AddTransient<ISkillSetService<SkillSet>, SkillSetService>();
             serviceCollection.AddTransient<ISkillSetSkillLinkService<SkillSetSkillLink>, SkillSetSkillLinkService>();
             serviceCollection.AddTransient<ISkillSnapshotService<SkillSnapshot>, SkillSnapshotService>();
+        }
+
+        public static void ConfigureAutoMapper(this IServiceCollection serviceCollection)
+        {
+            serviceCollection.AddAutoMapper(typeof(Swifty.Mapping.Profiles.WebMapping));
         }
 
         public static void ConfigureAuthorisation(this IServiceCollection serviceCollection, IConfiguration configuration)
