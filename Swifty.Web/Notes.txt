@@ -40,4 +40,5 @@ Future notes/thoughts:
 When everything is done:
 ----------------------
 
+- Do some front-end learning and make the site MUCH snazzier and user friendly (boards and snapshots and homepage). 
 - Put it up as a site somewhere and link to local DB (or copy DB) so it can be accessed via a URL instead of localhost/debugging

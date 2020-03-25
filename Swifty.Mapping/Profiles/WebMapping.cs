@@ -7,6 +7,9 @@ namespace Swifty.Mapping.Profiles
 {
     public class WebMapping : Profile
     {
+        public WebMapping()
+        {
 
+        }
     }
 }

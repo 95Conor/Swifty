@@ -24,7 +24,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Swifty.Core\Swifty.Core.csproj" />
     <ProjectReference Include="..\Swifty.Data\Swifty.Data.csproj" />
-    <ProjectReference Include="..\Swifty.Mapping\Swifty.Mapping.csproj" />
   </ItemGroup>
 
   <ItemGroup>

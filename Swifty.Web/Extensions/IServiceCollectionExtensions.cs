@@ -56,7 +56,7 @@ namespace Swifty.Extensions
 
         public static void ConfigureAutoMapper(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddAutoMapper(typeof(Swifty.Mapping.Profiles.WebMapping));
+            serviceCollection.AddAutoMapper(typeof(Startup));
         }
 
         public static void ConfigureAuthorisation(this IServiceCollection serviceCollection, IConfiguration configuration)
