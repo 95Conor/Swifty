@@ -4,6 +4,7 @@
     ViewData["Title"] = "Skill Board";
 }
 
+@* ToDo: Convert these to blue 'bubbles' and fit across the page evenly *@
 @* Tab Headers *@
 <div class="tab">
     @foreach (var skillArea in Model.IndexViewModel.SkillsByArea)
@@ -12,22 +13,28 @@
     }
 </div>
 
+@* ToDo: Style panels so they look better. Change background slightly on hover. Fill entire page rather than centre only *@
 @* Tab Content *@
 @foreach (var skillArea in Model.IndexViewModel.SkillsByArea)
 {
     <div id="@skillArea.Key.Id" class="tabcontent">
 
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
 
                 @foreach (var skillLevel in skillArea.Value.Keys)
                 {
                     <div class="col">
-                        <b>@skillLevel.Value</b>
+
+                        <div style="text-align:center;"><h2>@skillLevel.Value</h2><hr /></div>
 
                         @foreach (var skill in skillArea.Value[skillLevel])
                         {
-                            <p>@skill.Detail</p>
+                            <div class="card-group">
+                                <div class="card mb-4">
+                                    <div class="card-body">@skill.Detail</div>
+                                </div>
+                            </div>
                         }
                     </div>
                 }
