@@ -46,6 +46,7 @@ namespace Swifty.Extensions
         {
             serviceCollection.AddTransient<IAdminService<Admin>, AdminService>();
             serviceCollection.AddTransient<IUserService<User>, UserService>();
+
             serviceCollection.AddTransient<ISkillAreaService<SkillArea>, SkillAreaService>();
             serviceCollection.AddTransient<ISkillLevelService<SkillLevel>, SkillLevelService>();
             serviceCollection.AddTransient<ISkillService<Skill>, SkillService>();
@@ -78,10 +79,12 @@ namespace Swifty.Extensions
             });
 
             serviceCollection.AddTransient<IAuthorizationHandler, IsAdminHandler>();
+            serviceCollection.AddTransient<IAuthorizationHandler, RequiresUserLoginHandler>();
 
             serviceCollection.AddAuthorization(options =>
             {
                 options.AddPolicy("IsAdmin", policy => policy.Requirements.Add(new IsAdminRequirement()));
+                options.AddPolicy("RequiresUserLogin", policy => policy.Requirements.Add(new RequiresUserLoginRequirement()));
             });
         }
     }
