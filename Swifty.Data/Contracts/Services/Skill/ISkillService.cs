@@ -9,8 +9,8 @@ namespace Swifty.Data.Contracts.Services
 {
     public interface ISkillService<TEntity> : IEntityService<TEntity> where TEntity : class, IEntityBase
     {
-        public Task<Dictionary<SkillArea, List<Skill>>> ListAllSkillsBySkillArea();
+        public Task<Dictionary<SkillArea, Dictionary<SkillLevel, List<Skill>>>> ListAllSkillsByAreaAndLevel();
 
-        public Task<Dictionary<SkillArea, List<Skill>>> ListAllNonArchivedSkillsBySkillArea();
+        public Task<Dictionary<SkillArea, Dictionary<SkillLevel, List<Skill>>>> ListAllNonArchivedSkillsByAreaAndLevel();
     }
 }

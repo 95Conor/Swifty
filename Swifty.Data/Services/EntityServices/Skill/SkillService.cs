@@ -18,44 +18,56 @@ namespace Swifty.Data.Services
             _skillRepository = skillRepository;
         }
 
-        public async Task<Dictionary<SkillArea, List<Skill>>> ListAllSkillsBySkillArea()
+        public async Task<Dictionary<SkillArea, Dictionary<SkillLevel, List<Skill>>>> ListAllSkillsByAreaAndLevel()
         {
-            List<Skill> allSkills = await _skillRepository.ListAllAsync();
-
-            Dictionary<SkillArea, List<Skill>> toReturn = new Dictionary<SkillArea, List<Skill>>();
-
-            foreach (Skill skill in allSkills)
-            {
-                if (toReturn.ContainsKey(skill.Area))
-                {
-                    toReturn[skill.Area].Add(skill);
-                }
-                else
-                {
-                    toReturn.Add(skill.Area, new List<Skill>());
-                }
-            }
-
-            return toReturn;
+            return await GetAllSkillsByAreaAndLevel(excludeArchived: false);
         }
 
-        public async Task<Dictionary<SkillArea, List<Skill>>> ListAllNonArchivedSkillsBySkillArea()
+
+        public async Task<Dictionary<SkillArea, Dictionary<SkillLevel, List<Skill>>>> ListAllNonArchivedSkillsByAreaAndLevel()
         {
-            List<Skill> allSkills = await _skillRepository.ListAllNonArchivedAsync();
+            return await GetAllSkillsByAreaAndLevel(excludeArchived: true);
+        }
 
-            Dictionary<SkillArea, List<Skill>> toReturn = new Dictionary<SkillArea, List<Skill>>();
 
+        // Ideally I should use classes for this much nesting and separate the logic into separate functions in future, this is too messy
+        private async Task<Dictionary<SkillArea, Dictionary<SkillLevel, List<Skill>>>> GetAllSkillsByAreaAndLevel(bool excludeArchived)
+        {
+            List<Skill> allSkills = excludeArchived ? await _skillRepository.ListAllNonArchivedAsync() : await _skillRepository.ListAllAsync();
+
+            Dictionary<SkillArea, Dictionary<SkillLevel, List<Skill>>> toReturn = new Dictionary<SkillArea, Dictionary<SkillLevel, List<Skill>>>();
+
+            // Loop through all skills
             foreach (Skill skill in allSkills)
             {
+                // If we've already grouped by this area, add to the dictionary using skill area as key
                 if (toReturn.ContainsKey(skill.Area))
                 {
-                    toReturn[skill.Area].Add(skill);
+                    if (!excludeArchived || (!skill.Area.IsArchived && !skill.Level.IsArchived))
+                    {
+                        // Add to collection based on level key if we have found this level before
+                        if (toReturn[skill.Area].ContainsKey(skill.Level))
+                        {
+                            toReturn[skill.Area][skill.Level].Add(skill);
+                        }
+                        else
+                        {
+                            // Instantiate new dictionary if we haven't found this level before
+                            toReturn[skill.Area].Add(skill.Level, new List<Skill>() { skill });
+                            
+                        }
+                    }
                 }
                 else
                 {
-                    if (!skill.Area.IsArchived)
+                    // If we haven't grouped by this area yet, add to the dictionary as a new key
+                    if (!excludeArchived || (!skill.Area.IsArchived && !skill.Level.IsArchived))
                     {
-                        toReturn.Add(skill.Area, new List<Skill>() { skill });
+                        toReturn.Add(skill.Area,
+                            new Dictionary<SkillLevel, List<Skill>>()
+                        {
+                                { skill.Level , new List<Skill>() { skill } }
+                        });
                     }
                 }
             }

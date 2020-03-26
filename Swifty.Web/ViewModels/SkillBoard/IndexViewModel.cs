@@ -9,6 +9,6 @@ namespace Swifty.Web.ViewModels.SkillBoard
 {
     public class IndexViewModel : BaseViewModel
     {
-        public Dictionary<SkillAreaViewModel, List<SkillViewModel>> SkillsByArea { get; set; } = new Dictionary<SkillAreaViewModel, List<SkillViewModel>>();
+        public Dictionary<SkillAreaViewModel, Dictionary<SkillLevelViewModel, List<SkillViewModel>>> SkillsByArea { get; set; } = new Dictionary<SkillAreaViewModel, Dictionary<SkillLevelViewModel, List<SkillViewModel>>>();
     }
 }
