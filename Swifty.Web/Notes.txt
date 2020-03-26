@@ -10,12 +10,31 @@ Swifty DB Pwrd: Swifty123-()
 Current ToDo:
 ----------------------
 
+- Create SkillBoard page
+	- Logic is now in place to get all skills by skill area and level
+		- Dictionary<SkillArea, Dictionary<SkillLevel, List<Skill>>>, e.g:
+			
+			All:
+				Impact:
+					Level 1:
+						Skill1
+						Skill2
+					Level 2:
+						Skill3
+						Skill4
+				Influence:
+					Level 1:
+						Skill5
+						Skill6
+					Level 2:
+						Skill7
+						Skill8
+				........
+
 - Plan out architecture of skill marking/skill loading/skill snapshots before diving in
 	- SkillSetService and SkillService should have all the logic/functions whereby SkilLSetSkillLink objects are dealt with
 		- Could we just have an EXTENSION on the SkillSet repository which LOADS all of the SkillSetSkillLink and then loads the Skills entities and returns a list of Skills??
 			- Attempted the achieve the above in PersistSkillCollection function in SkillSetRepository - should just be able to call SkillSet.Set when using and it will be populated 
-
-- Create SkillBoard page
 
 - Implement some generic usage of the errors which can be recorded in the BaseViewModel
 
