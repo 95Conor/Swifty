@@ -16,8 +16,24 @@
 @foreach (var skillArea in Model.IndexViewModel.SkillsByArea)
 {
     <div id="@skillArea.Key.Id" class="tabcontent">
-        <h3>@skillArea.Key.Name</h3>
-        @* Replace <h3> above with logic to show all skills by level *@
+
+        <div class="container">
+            <div class="row">
+
+                @foreach (var skillLevel in skillArea.Value.Keys)
+                {
+                    <div class="col">
+                        <b>@skillLevel.Value</b>
+
+                        @foreach (var skill in skillArea.Value[skillLevel])
+                        {
+                            <p>@skill.Detail</p>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+
     </div>
 }
 
