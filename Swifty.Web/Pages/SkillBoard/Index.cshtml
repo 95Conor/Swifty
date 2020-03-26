@@ -4,5 +4,21 @@
     ViewData["Title"] = "Skill Board";
 }
 
-<h1>Skill Board Index</h1>
+@* Tab Headers *@
+<div class="tab">
+    @foreach (var skillArea in Model.IndexViewModel.SkillsByArea)
+    {
+        <button class="tablinks" onclick="openTab(event, '@skillArea.Key.Id')">@skillArea.Key.Name</button>
+    }
+</div>
+
+@* Tab Content *@
+@foreach (var skillArea in Model.IndexViewModel.SkillsByArea)
+{
+    <div id="@skillArea.Key.Id" class="tabcontent">
+        <h3>@skillArea.Key.Name</h3>
+        @* Replace <h3> above with logic to show all skills by level *@
+    </div>
+}
+
 
