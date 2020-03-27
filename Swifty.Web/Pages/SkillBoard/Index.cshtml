@@ -33,6 +33,10 @@
                             <div class="card-group">
                                 <div class="card mb-4">
                                     <div class="card-body">@skill.Detail</div>
+                                    <div class="card-footer">
+                                        <a class="btn btn-theme float-left" href="~/Setup/Skill/Edit/?id=@skill.Id" target="_blank"><i class="fa fa-edit"></i></a>
+                                        <a class="btn btn-theme float-right" href="~/Setup/Skill/Delete/?id=@skill.Id" target="_blank"><i class="fa fa-trash"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         }

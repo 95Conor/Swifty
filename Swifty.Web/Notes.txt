@@ -10,23 +10,30 @@ Swifty DB Pwrd: Swifty123-()
 Current ToDo:
 ----------------------
 
+- Create SkillBoard admin page (Same as normal one, but, links to go directly to the skill setup, and ability to (+) new skills at the bottom (defaults area and level when you go to skill setup))
+	- These links will probably want to redirect back to the admin board after rather than the skill setup index screen (Pass soomething in query parameter maybe).
 
+- Make setup pages for Admins
+	- Bear in mind this needs to decrypt/encrypt data too
 
-- Plan out architecture of skill marking/skill loading/skill snapshots before diving in
+- Update SkillSnapshot entity so it includes admin name (email) who marked it, and a string Notes, plus anything else.
+
+- Update SkillSnapshot repository/service architecture so it handles the SkillSetSkillLink in a easier way to utilise
 	- SkillSetService and SkillService should have all the logic/functions whereby SkilLSetSkillLink objects are dealt with
 		- Could we just have an EXTENSION on the SkillSet repository which LOADS all of the SkillSetSkillLink and then loads the Skills entities and returns a list of Skills??
 			- Attempted the achieve the above in PersistSkillCollection function in SkillSetRepository - should just be able to call SkillSet.Set when using and it will be populated 
 
-- Create SkillBoard admin page (editable)
+- Create SkillSnapshot admin page - ability to create a skill snapshot for users
 
-- Make setup pages for Admins & Users
-	- Bear in mind this needs to decrypt/encrypt data too
-	- Figure out how users are going to work and how we will record them 
-		- Save a new user when they login with a new claim if it doesn't already exist? Probably simplest way
+- Create SkillSnapshot landing page - ability to see all listed skill snapshots for that specific user based on user priniciap email claim (add function to UserService to GetUserByEmailClaim)
 
-- UI styling upgrade for the Skill Boards 
+- Create SkillSnapshot overview page - where the User will see the skill snapshot overview (skills with colours, notes, date and admin who marked it).
 
-- Implement some generic usage of the errors which can be recorded in the BaseViewModel
+- Potentially add a way for Admins to see all Users SkillSnapshots?
+
+- UI styling upgrade for the Skill Boards
+
+- Improve error handling across the board and utilise the errors available in the BaseViewModel (and output these in the shared Layout?)
 
 
 ----------------------

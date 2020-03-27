@@ -9,18 +9,26 @@ using Swifty.Data.Contracts.Services;
 using Swifty.Web.ViewModels.SkillBoard;
 using AutoMapper;
 using Swifty.Web.ViewModels.Shared;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using Microsoft.Extensions.Configuration;
 
 namespace Swifty.Web.Pages.SkillBoard
 {
+    [Authorize("RequiresUserLogin")]
     public class IndexModel : PageModel
     {
-        private readonly ISkillService<Skill> _skillService;
         private readonly IMapper _mapper;
+        private readonly ISkillService<Skill> _skillService;
+        private readonly IAdminService<Admin> _adminService;
+        private readonly IConfiguration _configuration;
 
-        public IndexModel(ISkillService<Skill> skillService, IMapper mapper)
+        public IndexModel(IMapper mapper, ISkillService<Skill> skillService, IAdminService<Admin> adminService, IConfiguration configuration)
         {
-            _skillService = skillService;
             _mapper = mapper;
+            _skillService = skillService;
+            _adminService = adminService;
+            _configuration = configuration;
         }
 
         [BindProperty]
@@ -30,9 +38,11 @@ namespace Swifty.Web.Pages.SkillBoard
         {
             var allSkillsBySkillArea = await _skillService.ListAllNonArchivedSkillsByAreaAndLevel();
 
-            var allSkillsBySkillAreaViewModels = _mapper.Map<Dictionary<SkillAreaViewModel, Dictionary<SkillLevelViewModel, List<SkillViewModel>>>>(allSkillsBySkillArea);
+            IndexViewModel.SkillsByArea = _mapper.Map<Dictionary<SkillAreaViewModel, Dictionary<SkillLevelViewModel, List<SkillViewModel>>>>(allSkillsBySkillArea);
 
-            IndexViewModel.SkillsByArea = allSkillsBySkillAreaViewModels;
+            string emailClaim = this.User.Claims.FirstOrDefault(x => x.Type.Equals(_configuration["Authorization:IdentityServer:ClaimsProperties:Email"]))?.Value;
+
+            IndexViewModel.DisplayAdminOptions = await _adminService.ValidateIsAdminByEmail(emailClaim);
 
             return Page();
         }

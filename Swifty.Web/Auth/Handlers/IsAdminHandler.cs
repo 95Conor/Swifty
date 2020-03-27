@@ -12,25 +12,25 @@ namespace Swifty.Web.Auth
 {
     public class IsAdminHandler : AuthorizationHandler<IsAdminRequirement>
     {
-        private readonly IConfiguration configuration;
-        private readonly IAdminService<Admin> adminService;
+        private readonly IConfiguration _configuration;
+        private readonly IAdminService<Admin> _adminService;
 
         public IsAdminHandler(IConfiguration configuration, IAdminService<Admin> adminService)
         {
-            this.configuration = configuration;
-            this.adminService = adminService;
+            _configuration = configuration;
+            _adminService = adminService;
         }
 
         protected override async Task HandleRequirementAsync(AuthorizationHandlerContext context, IsAdminRequirement requirement)
         {
-            string emailClaim = context.User.Claims.FirstOrDefault(x => x.Type.Equals(configuration["Authorization:IdentityServer:ClaimsProperties:Email"]))?.Value;
+            string emailClaim = context.User.Claims.FirstOrDefault(x => x.Type.Equals(_configuration["Authorization:IdentityServer:ClaimsProperties:Email"]))?.Value;
 
             if (string.IsNullOrWhiteSpace(emailClaim))
             {
                 return;
             }
 
-            bool userIsAdmin = await adminService.ValidateIsAdminByEmail(emailClaim);
+            bool userIsAdmin = await _adminService.ValidateIsAdminByEmail(emailClaim);
 
             if (userIsAdmin)
             {
