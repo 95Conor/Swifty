@@ -14,21 +14,15 @@ namespace Swifty.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        private readonly IBaseRepository<Admin> swiftyRepository;
 
-        public IndexModel(ILogger<IndexModel> logger, IBaseRepository<Admin> swiftyRepository)
+        public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
-            this.swiftyRepository = swiftyRepository;
         }
 
         public async Task OnGetAsync()
         {
-            //Admin me = new Admin() { Email = "conor.maher@tigerbay.co.uk" };
-            //Admin rich = new Admin() { Email = "richard.hodge@tigerbay.co.uk" };
 
-            //await swiftyRepository.AddAsync(me);
-            //await swiftyRepository.AddAsync(rich);
         }
     }
 }

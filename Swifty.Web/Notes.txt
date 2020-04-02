@@ -10,12 +10,6 @@ Swifty DB Pwrd: Swifty123-()
 Current ToDo:
 ----------------------
 
-- Create SkillBoard admin page (Same as normal one, but, links to go directly to the skill setup, and ability to (+) new skills at the bottom (defaults area and level when you go to skill setup))
-	- These links will probably want to redirect back to the admin board after rather than the skill setup index screen (Pass soomething in query parameter maybe).
-
-- Make setup pages for Admins
-	- Bear in mind this needs to decrypt/encrypt data too
-
 - Update SkillSnapshot entity so it includes admin name (email) who marked it, and a string Notes, plus anything else.
 
 - Update SkillSnapshot repository/service architecture so it handles the SkillSetSkillLink in a easier way to utilise
@@ -31,9 +25,12 @@ Current ToDo:
 
 - Potentially add a way for Admins to see all Users SkillSnapshots?
 
-- UI styling upgrade for the Skill Boards
+
+
+- UI styling upgrade for the Skill Boards and Skill Snapshots etc, general pages to be used should look nicer
 
 - Improve error handling across the board and utilise the errors available in the BaseViewModel (and output these in the shared Layout?)
+	- Also log errors?
 
 
 ----------------------

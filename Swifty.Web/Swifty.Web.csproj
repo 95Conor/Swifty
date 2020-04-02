@@ -27,7 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\SkillBoard\Admin\" />
     <Folder Include="Pages\SkillSnapshots\Admin\" />
   </ItemGroup>
 
