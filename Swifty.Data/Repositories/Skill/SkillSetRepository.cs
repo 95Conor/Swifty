@@ -76,16 +76,17 @@ namespace Swifty.Data.Repositories
         private async Task PersistSkillLinkCollection(SkillSet entity)
         {
             var allSkillSetSkillLinks = await _skillSetSkillLinkRepository.ListAllAsync();
+            var relevantSkillSetSkillLinks = allSkillSetSkillLinks.Where(x => x.SkillSetId == entity.Id);
 
             foreach (var skill in entity.Set)
             {
-                if (!allSkillSetSkillLinks.Any(x => x.SkillId == skill.Id && x.SkillSetId == entity.Id))
+                if (!allSkillSetSkillLinks.Any(x => x.SkillId == skill.Id))
                 {
                     entity.SkillLinkCollection.Add(new SkillSetSkillLink() { SkillId = skill.Id, SkillSetId = entity.Id });
                 }
                 else
                 {
-                    var skillSetSkillLinkEntity = allSkillSetSkillLinks.Where(x => x.SkillId == skill.Id && x.SkillSetId == entity.Id).FirstOrDefault();
+                    var skillSetSkillLinkEntity = allSkillSetSkillLinks.Where(x => x.SkillId == skill.Id).FirstOrDefault();
                     entity.SkillLinkCollection.Add(skillSetSkillLinkEntity);
                 }
             }
