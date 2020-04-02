@@ -27,5 +27,10 @@ namespace Swifty.Core.Entities
         public SkillSet GreenSkills { get; set; }
 
         public DateTime SnapshotDate { get; set; }
+
+        // Save hardcopy of admin username/email rather than foreign key to ensure data integrity when users look back at their snapshots
+        public string AdminReveiwer { get; set; }
+
+        public string AdminNotes { get; set; }
     }
 }
