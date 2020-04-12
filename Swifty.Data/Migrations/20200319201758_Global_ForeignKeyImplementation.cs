@@ -332,7 +332,7 @@ namespace Swifty.Data.Migrations
                 column: "AmberSkillsId",
                 principalTable: "SkillSets",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
+                onDelete: ReferentialAction.NoAction);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_SkillSnapshots_SkillSets_GreenSkillsId",
@@ -340,7 +340,7 @@ namespace Swifty.Data.Migrations
                 column: "GreenSkillsId",
                 principalTable: "SkillSets",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
+                onDelete: ReferentialAction.NoAction);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_SkillSnapshots_SkillSets_RedSkillsId",
@@ -348,7 +348,7 @@ namespace Swifty.Data.Migrations
                 column: "RedSkillsId",
                 principalTable: "SkillSets",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
+                onDelete: ReferentialAction.NoAction);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_SkillSnapshots_Users_UserId",

@@ -1,0 +1,53 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Configuration;
+using Swifty.Core.Entities;
+using Swifty.Data.Contracts.Services;
+using Swifty.Web.ViewModels.Shared;
+using Swifty.Web.ViewModels.SkillSnapshot;
+
+namespace Swifty.Web.Pages.SkillSnaphsots.Admin
+{
+    [Authorize("IsAdmin")]
+    public class NewModel : PageModel
+    {
+        private readonly IMapper _mapper;
+        private readonly ISkillService<Skill> _skillService;
+        private readonly IConfiguration _configuration;
+
+        public NewModel(IMapper mapper, ISkillService<Skill> skillService, IConfiguration configuration)
+        {
+            _mapper = mapper;
+            _skillService = skillService;
+            _configuration = configuration;
+        }
+
+        [BindProperty]
+        public NewViewModel NewViewModel { get; set; } = new NewViewModel();
+
+        public async Task<IActionResult> OnGetAsync()
+        {
+            var allSkillsBySkillArea = await _skillService.ListAllNonArchivedSkillsByAreaAndLevel();
+
+            NewViewModel.SkillsByArea = _mapper.Map<Dictionary<SkillAreaViewModel, Dictionary<SkillLevelViewModel, List<ReviewedSkillViewModel>>>>(allSkillsBySkillArea);
+
+            NewViewModel.AdminName = this.User.Claims.FirstOrDefault(x => x.Type.Equals(_configuration["Authorization:IdentityServer:ClaimsProperties:Email"]))?.Value;
+
+            return Page();
+        }
+
+        // On post - we should probably just map from the view models to get stuff we want to then pass to a SkillSnapshotService.CreateNewSkillSnapshot(user, admin name, green, red, yellow, datetime)
+        public async Task<IActionResult> OnPostAsync()
+        {
+            var check = 0;
+
+            return Page();
+        }
+    }
+}

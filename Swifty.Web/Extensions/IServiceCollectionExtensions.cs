@@ -37,8 +37,6 @@ namespace Swifty.Extensions
             serviceCollection.AddTransient<IBaseArchiveableRepository<SkillArea>, SkillAreaRepository>();
             serviceCollection.AddTransient<IBaseArchiveableRepository<SkillLevel>, SkillLevelRepository>();
             serviceCollection.AddTransient<IBaseArchiveableRepository<Skill>, SkillRepository>();
-            serviceCollection.AddTransient<IBaseRepository<SkillSet>, SkillSetRepository>();
-            serviceCollection.AddTransient<IBaseRepository<SkillSetSkillLink>, SkillSetSkillLinkRepository>();
             serviceCollection.AddTransient<IBaseRepository<SkillSnapshot>, SkillSnapshotRepository>();
         }
 
@@ -50,8 +48,6 @@ namespace Swifty.Extensions
             serviceCollection.AddTransient<ISkillAreaService<SkillArea>, SkillAreaService>();
             serviceCollection.AddTransient<ISkillLevelService<SkillLevel>, SkillLevelService>();
             serviceCollection.AddTransient<ISkillService<Skill>, SkillService>();
-            serviceCollection.AddTransient<ISkillSetService<SkillSet>, SkillSetService>();
-            serviceCollection.AddTransient<ISkillSetSkillLinkService<SkillSetSkillLink>, SkillSetSkillLinkService>();
             serviceCollection.AddTransient<ISkillSnapshotService<SkillSnapshot>, SkillSnapshotService>();
         }
 

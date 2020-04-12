@@ -3,33 +3,24 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using Swifty.Core.Contracts.Entities;
+using Swifty.Core.Entities.ValueObjects.Auth;
+using Swifty.Core.Entities.ValueObjects.Skill;
+using Swifty.Core.Enums;
 
 namespace Swifty.Core.Entities
 {
-    public class SkillSnapshot : IEntityBase
+    public partial class SkillSnapshot : IEntityBase
     {
         public int Id { get; set; }
 
-        [ForeignKey("User")]
-        public int UserId { get; set; }
-        public User User { get; set; }
+        public UserId UserId { get; set; }
 
-        [ForeignKey("RedSkills")]
-        public int RedSkillSetId { get; set; }
-        public SkillSet RedSkills { get; set; }
-
-        [ForeignKey("AmberSkills")]
-        public int AmberSkillSetId { get; set; }
-        public SkillSet AmberSkills { get; set; }
-
-        [ForeignKey("GreenSkills")]
-        public int GreenSkillSetId { get; set; }
-        public SkillSet GreenSkills { get; set; }
+        private readonly List<SkillReference> _skillReferences = new List<SkillReference>();
+        public IReadOnlyCollection<SkillReference> SkillReferences => _skillReferences.AsReadOnly();
 
         public DateTime SnapshotDate { get; set; }
 
-        // Save hardcopy of admin username/email rather than foreign key to ensure data integrity when users look back at their snapshots
-        public string AdminReveiwer { get; set; }
+        public string AdminReviewer { get; set; }
 
         public string AdminNotes { get; set; }
     }

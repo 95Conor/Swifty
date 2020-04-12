@@ -10,8 +10,6 @@ Swifty DB Pwrd: Swifty123-()
 Current ToDo:
 ----------------------
 
-- Update SkillSnapshot entity so it includes admin name (email) who marked it, and a string Notes, plus anything else.
-
 - Update SkillSnapshot repository/service architecture so it handles the SkillSetSkillLink in a easier way to utilise
 	- SkillSetService and SkillService should have all the logic/functions whereby SkilLSetSkillLink objects are dealt with
 		- Could we just have an EXTENSION on the SkillSet repository which LOADS all of the SkillSetSkillLink and then loads the Skills entities and returns a list of Skills??
@@ -48,5 +46,16 @@ Future notes/thoughts:
 When everything is done:
 ----------------------
 
+- Search for 'ToDo' and clean up all ToDo's where necessary
 - Do some front-end learning and make the site MUCH snazzier and user friendly (boards and snapshots and homepage). 
 - Put it up as a site somewhere and link to local DB (or copy DB) so it can be accessed via a URL instead of localhost/debugging
+
+
+
+----------------------
+Tech Debt for later improvement:
+----------------------
+
+- The view models for holding and processing the skill board data is way too nested in collections, this should be simplified
+- Front-end is really shit and needs improvement once functionality is there - use blazor if possible
+- New SkillShot admin screen is really bad, ideally the 'select user', 'skill board', and 'notes/submit' should be in a flow where you can go back and fourth on the same page

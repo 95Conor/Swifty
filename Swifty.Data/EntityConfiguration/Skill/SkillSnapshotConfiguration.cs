@@ -16,6 +16,10 @@ namespace Swifty.Data.EntityConfiguration
             builder.Property(skillSnapshot => skillSnapshot.SnapshotDate)
                     .HasColumnType("Date")
                     .HasDefaultValueSql("GetDate()");
+
+            builder.OwnsOne(ss => ss.UserId, x => x.Property(user => user.Id).HasColumnName("UserId"));
+
+            builder.OwnsMany(ss => ss.SkillReferences, SkillReferenceConfiguration.Configure);
         }
     }
 }

@@ -26,10 +26,6 @@
     <ProjectReference Include="..\Swifty.Data\Swifty.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\SkillSnapshots\Admin\" />
-  </ItemGroup>
-
 
 
 </Project>

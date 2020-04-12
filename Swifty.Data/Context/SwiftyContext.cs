@@ -20,8 +20,6 @@ namespace Swifty.Data.Context
 
         public DbSet<Skill> Skills { get; set; }
 
-        public DbSet<SkillSet> SkillSets { get; set; }
-
         public DbSet<SkillSnapshot> SkillSnapshots { get; set; }
 
         public DbSet<Admin> Admins { get; set; }

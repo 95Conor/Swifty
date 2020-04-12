@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Swifty.Core.Entities;
 using Swifty.Web.ViewModels.Shared;
+using Swifty.Web.ViewModels.SkillSnapshot;
 
 namespace Swifty.Web.Mapping
 {
@@ -17,6 +18,8 @@ namespace Swifty.Web.Mapping
             CreateMap<SkillLevel, SkillLevelViewModel>().ReverseMap();
 
             CreateMap<Skill, SkillViewModel>().ReverseMap();
+
+            CreateMap<Skill, ReviewedSkillViewModel>().ReverseMap();
         }
     }
 }

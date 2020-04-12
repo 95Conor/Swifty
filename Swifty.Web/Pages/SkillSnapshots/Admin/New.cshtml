@@ -1,0 +1,102 @@
+﻿@page
+@model Swifty.Web.Pages.SkillSnaphsots.Admin.NewModel
+@{
+    ViewData["Title"] = "New Skill Snapshot";
+}
+        <h1>New Skill Snapshot</h1>
+
+        @*// Use some shit javascript to go back and fourth to select the three 'screens'
+        // In future use blazor and see if this can make it cleaner
+
+        // Select a user from a dropdown
+
+        // Select skills with green/amber/red colours from skillboard
+
+        // Add a note and save*@
+
+        <div id="flowBar">
+
+        </div>
+
+        <span id="userSelection" hidden>
+            <h4>Select User</h4>
+
+            // Need dropdown here
+
+            @Html.HiddenFor(x => Model.NewViewModel.AdminName);
+        </span>
+
+        <span id="skillBoard" @*hidden*@>
+
+            <div class="tab">
+                @foreach (var skillArea in Model.NewViewModel.SkillsByArea)
+                {
+                    <button class="tablinks" onclick="openTab(event, '@skillArea.Key.Id')">@skillArea.Key.Name</button>
+                }
+            </div>
+
+            <form method="post">
+
+                @* This screen is truly disgusting, need to refactor the horrible nesting in the way this is handled in future *@
+
+                @* The checkboxes need to be properly sorted out and changed to be selectable squares of the bottom rather than check boxes. Should make background of the card go the same colour and remove the check from the other 3 options *@
+
+                @for (int i = 0; i < Model.NewViewModel.SkillsByArea.Count; i++)
+                {
+                    <div id="@Model.NewViewModel.SkillsByArea.ElementAt(i).Key.Id" class="tabcontent">
+
+                        <div class="container-fluid">
+                            <div class="row">
+
+                                @for (int ii = 0; ii < Model.NewViewModel.SkillsByArea.ElementAt(i).Value.Keys.Count; ii++)
+                                {
+                                    <div class="col">
+
+                                        <div style="text-align:center;"><h2>@Model.NewViewModel.SkillsByArea.ElementAt(i).Value.Keys.ElementAt(ii).Value</h2><hr /></div>
+
+                                        @for (int iii = 0; iii < Model.NewViewModel.SkillsByArea.ElementAt(i).Value[Model.NewViewModel.SkillsByArea.ElementAt(i).Value.Keys.ElementAt(ii)].Count; iii++)
+                                        {
+                                            var skill = Model.NewViewModel.SkillsByArea.ElementAt(i).Value[Model.NewViewModel.SkillsByArea.ElementAt(i).Value.Keys.ElementAt(ii)].ElementAt(iii);
+
+                                            <div class="card-group">
+                                                <div class="card mb-4">
+                                                    <div class="card-body">@skill.Detail</div>
+                                                    <div class="card-footer text-muted">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-sm bg-light ml-1 mr-1" onclick="">
+                                                                    &#8205;
+                                                                </div>
+                                                                <div class="col-sm bg-danger border-dark mr-1" onclick="">
+                                                                    @Html.CheckBoxFor(model => Model.NewViewModel.SkillsByArea.ElementAt(i).Value[Model.NewViewModel.SkillsByArea.ElementAt(i).Value.Keys.ElementAt(ii)].ElementAt(iii).ReviewedRed)
+                                                                </div>
+                                                                <div class="col-sm bg-warning border-dark mr-1" onclick="">
+                                                                    @Html.CheckBoxFor(model => Model.NewViewModel.SkillsByArea.ElementAt(i).Value[Model.NewViewModel.SkillsByArea.ElementAt(i).Value.Keys.ElementAt(ii)].ElementAt(iii).ReviewedAmber)
+                                                                </div>
+                                                                <div class="col-sm bg-success border-dark mr-1" onclick="">
+                                                                    @Html.CheckBoxFor(model => Model.NewViewModel.SkillsByArea.ElementAt(i).Value[Model.NewViewModel.SkillsByArea.ElementAt(i).Value.Keys.ElementAt(ii)].ElementAt(iii).ReviewedGreen)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                }
+
+                <span id="notesAndSave">
+                    <button type="submit">Submit</button>
+                </span>
+
+            </form>
+
+        </span>
+
+
+
