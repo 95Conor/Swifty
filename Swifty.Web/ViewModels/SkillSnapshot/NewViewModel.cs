@@ -16,5 +16,7 @@ namespace Swifty.Web.ViewModels.SkillSnapshot
         public string ReviewerNotes { get; set; }
 
         public string AdminName { get; set; }
+
+        public List<ReviewedSkillViewModel> AllSkills { get; set; }
     }
 }

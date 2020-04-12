@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
 using Swifty.Core.Entities;
+using Swifty.Data.Contracts.Repositories;
 using Swifty.Data.Contracts.Services;
 using Swifty.Web.ViewModels.Shared;
 using Swifty.Web.ViewModels.SkillSnapshot;
@@ -20,12 +21,14 @@ namespace Swifty.Web.Pages.SkillSnaphsots.Admin
         private readonly IMapper _mapper;
         private readonly ISkillService<Skill> _skillService;
         private readonly IConfiguration _configuration;
+        private readonly IBaseArchiveableRepository<Skill> _skillRepository;
 
-        public NewModel(IMapper mapper, ISkillService<Skill> skillService, IConfiguration configuration)
+        public NewModel(IMapper mapper, ISkillService<Skill> skillService, IConfiguration configuration, IBaseArchiveableRepository<Skill> skillRepository)
         {
             _mapper = mapper;
             _skillService = skillService;
             _configuration = configuration;
+            _skillRepository = skillRepository;
         }
 
         [BindProperty]
@@ -38,6 +41,10 @@ namespace Swifty.Web.Pages.SkillSnaphsots.Admin
             NewViewModel.SkillsByArea = _mapper.Map<Dictionary<SkillAreaViewModel, Dictionary<SkillLevelViewModel, List<ReviewedSkillViewModel>>>>(allSkillsBySkillArea);
 
             NewViewModel.AdminName = this.User.Claims.FirstOrDefault(x => x.Type.Equals(_configuration["Authorization:IdentityServer:ClaimsProperties:Email"]))?.Value;
+
+            var allSkillEntities = await _skillRepository.ListAllNonArchivedAsync();
+
+            NewViewModel.AllSkills = _mapper.Map<List<ReviewedSkillViewModel>>(allSkillEntities);
 
             return Page();
         }

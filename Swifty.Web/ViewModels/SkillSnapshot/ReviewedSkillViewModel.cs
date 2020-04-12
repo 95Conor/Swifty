@@ -10,9 +10,9 @@ namespace Swifty.Web.ViewModels.SkillSnapshot
     {
         public int Id { get; set; }
 
-        public SkillAreaViewModel SkillArea { get; set; }
+        public int SkillAreaId { get; set; }
 
-        public SkillLevelViewModel SkillLevel { get; set; }
+        public int SkillLevelId { get; set; }
 
         public bool IsArchived { get; set; }
 

@@ -10,18 +10,13 @@ Swifty DB Pwrd: Swifty123-()
 Current ToDo:
 ----------------------
 
-- Update SkillSnapshot repository/service architecture so it handles the SkillSetSkillLink in a easier way to utilise
-	- SkillSetService and SkillService should have all the logic/functions whereby SkilLSetSkillLink objects are dealt with
-		- Could we just have an EXTENSION on the SkillSet repository which LOADS all of the SkillSetSkillLink and then loads the Skills entities and returns a list of Skills??
-			- Attempted the achieve the above in PersistSkillCollection function in SkillSetRepository - should just be able to call SkillSet.Set when using and it will be populated 
-
 - Create SkillSnapshot admin page - ability to create a skill snapshot for users
 
 - Create SkillSnapshot landing page - ability to see all listed skill snapshots for that specific user based on user priniciap email claim (add function to UserService to GetUserByEmailClaim)
 
 - Create SkillSnapshot overview page - where the User will see the skill snapshot overview (skills with colours, notes, date and admin who marked it).
 
-- Potentially add a way for Admins to see all Users SkillSnapshots?
+- Potentially add a way for Admins to see all Users SkillSnapshots (and then load them into a new skillsnapshot as a starting point?)
 
 
 
@@ -49,8 +44,6 @@ When everything is done:
 - Search for 'ToDo' and clean up all ToDo's where necessary
 - Do some front-end learning and make the site MUCH snazzier and user friendly (boards and snapshots and homepage). 
 - Put it up as a site somewhere and link to local DB (or copy DB) so it can be accessed via a URL instead of localhost/debugging
-
-
 
 ----------------------
 Tech Debt for later improvement:
