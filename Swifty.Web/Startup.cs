@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,6 +29,11 @@ namespace Swifty
 
             services.AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
+
+            services.Configure<FormOptions>(options =>
+            {
+                options.ValueCountLimit = 8192;
+            });
 
             services.ConfigureDatabase(Configuration);
 
