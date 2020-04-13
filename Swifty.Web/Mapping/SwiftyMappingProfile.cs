@@ -24,12 +24,16 @@ namespace Swifty.Web.Mapping
             CreateMap<Skill, ReviewedSkillViewModel>().ReverseMap();
 
             CreateMap<ReviewedSkillViewModel, SkillReference>()
-                .ForMember(dest => dest.Colour, opts => opts.MapFrom(src => 
+                .ForMember(dest => dest.Colour, opts => opts.MapFrom(src =>
                     src.ReviewedRed ? SkillColour.Red :
                     src.ReviewedAmber ? SkillColour.Amber :
                     src.ReviewedGreen ? SkillColour.Green :
                     SkillColour.NotSet
-                ));
+                ))
+                .ReverseMap()
+                .ForMember(dest => dest.ReviewedGreen, opts => opts.MapFrom(src => src.Colour == SkillColour.Green ? true : false))
+                .ForMember(dest => dest.ReviewedAmber, opts => opts.MapFrom(src => src.Colour == SkillColour.Amber ? true : false))
+                .ForMember(dest => dest.ReviewedRed, opts => opts.MapFrom(src => src.Colour == SkillColour.Red ? true : false));
 
             CreateMap<SkillSnapshot, SkillSnapshotSummaryViewModel>()
                 .ForMember(dest => dest.SkillSnapshotId, opts => opts.MapFrom(src => src.Id))

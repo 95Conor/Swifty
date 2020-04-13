@@ -23,6 +23,7 @@ namespace Swifty.Web.Pages.SkillSnapshots
         private readonly ISkillService<Skill> _skillService;
         private readonly ISkillSnapshotService<SkillSnapshot> _skillSnapshotService;
         private readonly IBaseArchiveableRepository<Skill> _skillRepository;
+        private readonly IBaseRepository<SkillSnapshot> _skillSnapshotRepository;
 
         public ViewModel(IMapper mapper,
             IConfiguration configuration,
@@ -30,7 +31,8 @@ namespace Swifty.Web.Pages.SkillSnapshots
             IUserService<User> userService,
             ISkillService<Skill> skillService,
             ISkillSnapshotService<SkillSnapshot> skillSnapshotService,
-            IBaseArchiveableRepository<Skill> skillRepository)
+            IBaseArchiveableRepository<Skill> skillRepository,
+            IBaseRepository<SkillSnapshot> skillSnapshotRepository)
         {
             _mapper = mapper;
             _configuration = configuration;
@@ -39,6 +41,7 @@ namespace Swifty.Web.Pages.SkillSnapshots
             _skillService = skillService;
             _skillSnapshotService = skillSnapshotService;
             _skillRepository = skillRepository;
+            _skillSnapshotRepository = skillSnapshotRepository;
         }
 
         [BindProperty]
@@ -53,35 +56,28 @@ namespace Swifty.Web.Pages.SkillSnapshots
 
             string userEmail = this.User.Claims.FirstOrDefault(x => x.Type.Equals(_configuration["Authorization:IdentityServer:ClaimsProperties:Email"]))?.Value;
 
-            //if (await _adminService.ValidateIsAdminByEmail(userEmail))
-            //{
-            //    return await OnGetAdminAsync();
-            //}
+            var skillSnapshot = await _skillSnapshotRepository.GetByIdAsync(id.Value);
+            var user = await _userService.GetUserByEmail(userEmail);
 
-            var userEntity = _userService.GetUserByEmail(userEmail);
-
-            if (userEntity == null)
+            if (skillSnapshot == null)
             {
                 return NotFound();
+            }
+
+            if (!await _adminService.ValidateIsAdminByEmail(userEmail) && user?.Id != skillSnapshot.UserId.Id)
+            {
+                return RedirectToPagePermanent("/Account/AccessDenied");
             }
 
             var allSkillsBySkillArea = await _skillService.ListAllNonArchivedSkillsByAreaAndLevel();
 
             ViewViewModel.SkillsByArea = _mapper.Map<Dictionary<SkillAreaViewModel, Dictionary<SkillLevelViewModel, List<ReviewedSkillViewModel>>>>(allSkillsBySkillArea);
 
-            //var allSkillEntities = await _skillRepository.ListAllNonArchivedAsync();
+            ViewViewModel.SkillSnapshotSummary = _mapper.Map<SkillSnapshotSummaryViewModel>(skillSnapshot);
 
-            //IndexViewModel.UserReviewedSkills = _mapper.Map<List<ReviewedSkillViewModel>>(allSkillEntities);
-
-            //var skillSnapshot = _skillSnapshotRepository.GetById(...)
+            ViewViewModel.UserReviewedSkills = _mapper.Map<List<ReviewedSkillViewModel>>(skillSnapshot.SkillReferences);
 
             return Page();
         }
-
-        //// To use when an admin browses to the page. Removed for now for testing 
-        //private async Task<IActionResult> OnGetAdminAsync()
-        //{
-        //    return Page();
-        //}
     }
 }
