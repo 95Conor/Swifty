@@ -2,6 +2,7 @@
 @model Swifty.Web.Pages.SkillSnaphsots.Admin.NewModel
 @{
     ViewData["Title"] = "New Skill Snapshot";
+    ViewData["PageLayout"] = "fluid";
 }
 <h1>New Skill Snapshot</h1>
 
@@ -21,13 +22,17 @@
 
 <form method="post">
 
-    <span id="userSelection" hidden>
+    <span id="userSelection">
         <h4>Select User</h4>
 
-        // Need dropdown here
+        <div class="form-group">
+            @*<label asp-for="NewViewModel.SelectedUserId" class="control-label"></label>*@
+            <select asp-for="NewViewModel.SelectedUserId" asp-items="Model.Users.OrderBy(x => x.Text)" class="form-control">
+                <option value="">-- Select --</option>
+            </select>
+            <span asp-validation-for="NewViewModel.SelectedUserId" class="text-danger"></span>
+        </div>
 
-        @Html.HiddenFor(x => Model.NewViewModel.AdminName);
-        @Html.HiddenFor(x => Model.NewViewModel.SkillsByArea);
     </span>
 
     <span id="skillBoard" @*hidden*@>
@@ -41,8 +46,6 @@
 
         @* This screen is truly disgusting, need to refactor the horrible nesting in the way this is handled in future *@
 
-        @* The checkboxes need to be properly sorted out and changed to be selectable squares of the bottom rather than check boxes. Should make background of the card go the same colour and remove the check from the other 3 options *@
-
         @for (int i = 0; i < Model.NewViewModel.SkillsByArea.Count; i++)
         {
             <div id="@Model.NewViewModel.SkillsByArea.ElementAt(i).Key.Id" class="tabcontent">
@@ -52,41 +55,47 @@
 
                         @for (int ii = 0; ii < Model.NewViewModel.SkillsByArea.ElementAt(i).Value.Keys.Count; ii++)
                         {
-                            <div class="col">
+                        <div class="col">
 
-                                <div style="text-align:center;"><h2>@Model.NewViewModel.SkillsByArea.ElementAt(i).Value.Keys.ElementAt(ii).Value</h2><hr /></div>
+                            <div style="text-align:center;"><h2>@Model.NewViewModel.SkillsByArea.ElementAt(i).Value.Keys.ElementAt(ii).Value</h2><hr /></div>
 
-                                @for (int iii = 0; iii < Model.NewViewModel.SkillsByArea.ElementAt(i).Value[Model.NewViewModel.SkillsByArea.ElementAt(i).Value.Keys.ElementAt(ii)].Count; iii++)
-                                {
-                                    var skill = Model.NewViewModel.SkillsByArea.ElementAt(i).Value[Model.NewViewModel.SkillsByArea.ElementAt(i).Value.Keys.ElementAt(ii)].ElementAt(iii);
+                            @for (int iii = 0; iii < Model.NewViewModel.SkillsByArea.ElementAt(i).Value[Model.NewViewModel.SkillsByArea.ElementAt(i).Value.Keys.ElementAt(ii)].Count; iii++)
+                            {
+                                var skill = Model.NewViewModel.SkillsByArea.ElementAt(i).Value[Model.NewViewModel.SkillsByArea.ElementAt(i).Value.Keys.ElementAt(ii)].ElementAt(iii);
 
-                                    var reviewedSkillIndexer = Model.NewViewModel.AllSkills.IndexOf(Model.NewViewModel.AllSkills.FirstOrDefault(x => x.Id == skill.Id));
+                                var reviewedSkillIndex = Model.NewViewModel.UserReviewedSkills.IndexOf(Model.NewViewModel.UserReviewedSkills.FirstOrDefault(x => x.Id == skill.Id));
 
-                                    <div class="card-group">
-                                        <div class="card mb-4">
-                                            <div class="card-body">@skill.Detail</div>
-                                            <div class="card-footer text-muted">
-                                                <div class="container">
-                                                    <div class="row">
-                                                        <div class="col-sm bg-light ml-1 mr-1" onclick="">
-                                                            &#8205;
-                                                        </div>
-                                                        <div class="col-sm bg-danger border-dark mr-1" onclick="">
-                                                            @Html.CheckBoxFor(model => Model.NewViewModel.AllSkills[reviewedSkillIndexer].ReviewedRed)
-                                                        </div>
-                                                        <div class="col-sm bg-warning border-dark mr-1" onclick="">
-                                                            @Html.CheckBoxFor(model => Model.NewViewModel.SkillsByArea.ElementAt(i).Value[Model.NewViewModel.SkillsByArea.ElementAt(i).Value.Keys.ElementAt(ii)].ElementAt(iii).ReviewedAmber)
-                                                        </div>
-                                                        <div class="col-sm bg-success border-dark mr-1" onclick="">
-                                                            @Html.CheckBoxFor(model => Model.NewViewModel.SkillsByArea.ElementAt(i).Value[Model.NewViewModel.SkillsByArea.ElementAt(i).Value.Keys.ElementAt(ii)].ElementAt(iii).ReviewedGreen)
-                                                        </div>
+                                @Html.HiddenFor(model => model.NewViewModel.UserReviewedSkills[reviewedSkillIndex].Id)
+                                @*@Html.HiddenFor(model => model.NewViewModel.UserReviewedSkills[reviewedSkillIndex].Detail)
+                                @Html.HiddenFor(model => model.NewViewModel.UserReviewedSkills[reviewedSkillIndex].IsArchived)
+                                @Html.HiddenFor(model => model.NewViewModel.UserReviewedSkills[reviewedSkillIndex].SkillAreaId)
+                                @Html.HiddenFor(model => model.NewViewModel.UserReviewedSkills[reviewedSkillIndex].SkillLevelId)*@
+
+                                <div class="card-group">
+                                    <div class="card mb-4">
+                                        <div class="card-body">@skill.Detail</div>
+                                        <div class="card-footer text-muted">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-sm bg-light ml-1 mr-1" onclick="">
+                                                        &#8205;
+                                                    </div>
+                                                    <div class="col-sm bg-danger border-dark mr-1" onclick="">
+                                                        @Html.CheckBoxFor(model => Model.NewViewModel.UserReviewedSkills[reviewedSkillIndex].ReviewedRed)
+                                                    </div>
+                                                    <div class="col-sm bg-warning border-dark mr-1" onclick="">
+                                                        @Html.CheckBoxFor(model => Model.NewViewModel.UserReviewedSkills[reviewedSkillIndex].ReviewedAmber)
+                                                    </div>
+                                                    <div class="col-sm bg-success border-dark mr-1" onclick="">
+                                                        @Html.CheckBoxFor(model => Model.NewViewModel.UserReviewedSkills[reviewedSkillIndex].ReviewedGreen)
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                }
-                            </div>
+                                </div>
+                            }
+                        </div>
                         }
                     </div>
                 </div>
@@ -95,10 +104,10 @@
         }
 
         <span id="notesAndSave">
+            @Html.EditorFor(model => model.NewViewModel.ReviewerNotes)
+
             <button type="submit">Submit</button>
         </span>
-
-
 
     </span>
 

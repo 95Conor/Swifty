@@ -11,6 +11,21 @@ Current ToDo:
 ----------------------
 
 - Create SkillSnapshot admin page - ability to create a skill snapshot for users
+	- TODO:
+
+	- Add hidden fields for all UserReviewedSkill objects so it all gets posted back properly
+	- Add user repo and select list on UI so we can select a user to mark
+	- Make sure everything is posting back as we expect
+	- Test loading a skillshot just by using Repo.GetById - can we easily retrieve skills and their colours as expected?
+
+	- Add error/success messages to page on post-back
+	- Make .EditFor for ReviewerNotes a bit nicer to use
+	- Make a brief 'flow' so we can choose user, then board review, then notes and submit (javascript show/hide)
+	- Fix green/red/amber checkbox appearance so it's nice (have a think, maybe not a checkbox at all but something nicer)
+	- Make skill cards change colour when checkbox is selected and only allow one selection a ta time
+	- Overall improvement to page styling (flow bar at the top for process, the skill board (try them with white text and gray/black background? Site background darker?))
+
+
 
 - Create SkillSnapshot landing page - ability to see all listed skill snapshots for that specific user based on user priniciap email claim (add function to UserService to GetUserByEmailClaim)
 
@@ -36,6 +51,8 @@ Future notes/thoughts:
 - SkillSnapshot should maybe also have the Admin email saved against it so that it can be displayed, so a user knows who gave them that skillsnapshot, years down the line
 - SkillSnapshot may also have a notes string against it whereby the marker can add loads of notes and will then be displayed when the user sees the skillsnapshot? e.g. improve on this, do this, that.
 - When new SkillSnapshot is being made by admin, first it should let them select user, then post user ID - when page reloads it see's user ID query string so loads entire page for marking then
+- Add a little key on the skill snapshot screen to show what green/red/amber mean (descriptions) - can make these customisable by a screen or a config value (or both)
+- Probably need a way to delete users (make a setup page like admin?) for when people leave etc in future. Might also be useful to be able to add them.
 
 ----------------------
 When everything is done:
