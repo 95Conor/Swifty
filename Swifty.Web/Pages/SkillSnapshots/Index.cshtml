@@ -4,5 +4,34 @@
     ViewData["Title"] = "Skill Snapshots";
 }
 
-<h1>My Skill Snapshots</h1>
+<h1>Skill Snapshots</h1>
+<br />
 
+@foreach (var skillSummaryByUser in Model.IndexViewModel.SkillSnapshotSummaries)
+{
+    <h3>@skillSummaryByUser.Key.ToString()</h3>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.LabelFor(x => x.IndexViewModel.SkillSnapshotSummaries.Values.FirstOrDefault().FirstOrDefault().ReviewedDate)
+            </th>
+            <th>
+                @Html.LabelFor(x => x.IndexViewModel.SkillSnapshotSummaries.Values.FirstOrDefault().FirstOrDefault().ReviewerEmail)
+            </th>
+        </tr>
+        @foreach (var skillSummary in skillSummaryByUser.Value)
+        {
+            <tr>
+                <td>
+                    @skillSummary.ReviewedDate
+                </td>
+                <td>
+                    @skillSummary.ReviewerEmail
+                </td>
+            </tr>
+        }
+    </table>
+
+    <br />
+}

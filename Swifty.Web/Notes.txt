@@ -12,20 +12,12 @@ Current ToDo:
 
 - Create SkillSnapshot admin page - ability to create a skill snapshot for users
 	- TODO:
-
-	- Add hidden fields for all UserReviewedSkill objects so it all gets posted back properly
-	- Add user repo and select list on UI so we can select a user to mark
-	- Make sure everything is posting back as we expect
-	- Test loading a skillshot just by using Repo.GetById - can we easily retrieve skills and their colours as expected?
-
 	- Add error/success messages to page on post-back
 	- Make .EditFor for ReviewerNotes a bit nicer to use
 	- Make a brief 'flow' so we can choose user, then board review, then notes and submit (javascript show/hide)
 	- Fix green/red/amber checkbox appearance so it's nice (have a think, maybe not a checkbox at all but something nicer)
 	- Make skill cards change colour when checkbox is selected and only allow one selection a ta time
 	- Overall improvement to page styling (flow bar at the top for process, the skill board (try them with white text and gray/black background? Site background darker?))
-
-
 
 - Create SkillSnapshot landing page - ability to see all listed skill snapshots for that specific user based on user priniciap email claim (add function to UserService to GetUserByEmailClaim)
 

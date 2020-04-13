@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Swifty.Web.ViewModels.SkillSnapshot
+namespace Swifty.Web.ViewModels.Shared
 {
     public class ReviewedSkillViewModel
     {

@@ -29,5 +29,12 @@ namespace Swifty.Data.Services
                 await _userRepository.AddAsync(newUser);
             }
         }
+
+        public async Task<User> GetUserByEmail(string userEmail)
+        {
+            var allUsers = await _userRepository.ListAllAsync();
+
+            return allUsers.FirstOrDefault(x => x.Email.ToLower() == userEmail.ToLower());
+        }
     }
 }
