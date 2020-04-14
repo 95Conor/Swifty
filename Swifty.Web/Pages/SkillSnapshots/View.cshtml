@@ -5,6 +5,15 @@
         ViewData["PageLayout"] = "fluid";
 }
 
+<div>
+    <ul>
+        <li>Reviewed on: <b>@Model.ViewViewModel.SkillSnapshotSummary.ReviewedDate</b></li>
+        <li>Reviewed by: <b>@Model.ViewViewModel.SkillSnapshotSummary.ReviewerEmail</b></li>
+    </ul>
+</div>
+
+<hr />
+
     <div class="tab">
         @foreach (var skillArea in Model.ViewViewModel.SkillsByArea)
         {
