@@ -39,7 +39,8 @@ namespace Swifty.Web.Mapping
                 .ForMember(dest => dest.SkillSnapshotId, opts => opts.MapFrom(src => src.Id))
                 .ForMember(dest => dest.UserId, opts => opts.MapFrom(src => src.UserId.Id))
                 .ForMember(dest => dest.ReviewerEmail, opts => opts.MapFrom(src => src.AdminReviewer))
-                .ForMember(dest => dest.ReviewedDate, opts => opts.MapFrom(src => src.SnapshotDate));
+                .ForMember(dest => dest.ReviewedDate, opts => opts.MapFrom(src => src.SnapshotDate))
+                .ForMember(dest => dest.ReviewerNotes, opts => opts.MapFrom(src => src.AdminNotes));
         }
     }
 }

@@ -17,5 +17,7 @@ namespace Swifty.Web.ViewModels.Shared
 
         [Display(Name = "Date Reviewed")]
         public DateTime ReviewedDate { get; set; }
+
+        public string ReviewerNotes { get; set; }
     }
 }
