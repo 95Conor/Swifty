@@ -8,22 +8,24 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="icon" href="~/anim-icon--wind.gif" type="image/gif">
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Swifty</a>
+                <img src="~/anim-icon--wind.gif" style=" width:56px; border-radius: 50%; opacity:0.8; z-index:1; height:56px; " />
+                <a class="navbar-brand pl-1 pr-4" asp-area="" asp-page="/Index">Swifty</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
+                        <li class="nav-item pr-4">
                             <a class="nav-link text-dark" href="~/SkillBoard/Index">Skill Board</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item pr-4">
                             <a class="nav-link text-dark" href="~/SkillSnapshots/Index">Skill Snapshots</a>
                         </li>
                         <li class="nav-item">
