@@ -2,8 +2,49 @@
 @model Swifty.Web.Pages.SkillSnapshots.ViewModel
 @{
     ViewData["Title"] = "View Skill Snapshot";
+        ViewData["PageLayout"] = "fluid";
 }
 
-<h1>View Skill Snapshot</h1>
+    <div class="tab">
+        @foreach (var skillArea in Model.ViewViewModel.SkillsByArea)
+        {
+            <button class="tablinks" onclick="openTab(event, '@skillArea.Key.Id'); return false;">@skillArea.Key.Name</button>
+        }
+    </div>
 
-// Hopefully should have everything we need behind this to do the view now (added mapping etc) but haven't checked yet
+
+    @for (int i = 0; i < Model.ViewViewModel.SkillsByArea.Count; i++)
+    {
+        <div id="@Model.ViewViewModel.SkillsByArea.ElementAt(i).Key.Id" class="tabcontent">
+
+            <div class="container-fluid">
+                <div class="row">
+
+                    @for (int ii = 0; ii < Model.ViewViewModel.SkillsByArea.ElementAt(i).Value.Keys.Count; ii++)
+                    {
+                        <div class="col">
+
+                            <div style="text-align:center;"><h2>@Model.ViewViewModel.SkillsByArea.ElementAt(i).Value.Keys.ElementAt(ii).Value</h2><hr /></div>
+
+                            @for (int iii = 0; iii < Model.ViewViewModel.SkillsByArea.ElementAt(i).Value[Model.ViewViewModel.SkillsByArea.ElementAt(i).Value.Keys.ElementAt(ii)].Count; iii++)
+                            {
+                                var skill = Model.ViewViewModel.SkillsByArea.ElementAt(i).Value[Model.ViewViewModel.SkillsByArea.ElementAt(i).Value.Keys.ElementAt(ii)].ElementAt(iii);
+
+                                var reviewedSkillIndex = Model.ViewViewModel.UserReviewedSkills.IndexOf(Model.ViewViewModel.UserReviewedSkills.FirstOrDefault(x => x.Id == skill.Id));
+
+                                @Html.HiddenFor(model => model.ViewViewModel.UserReviewedSkills[reviewedSkillIndex].Id)
+
+                                <div class="card-group">
+                                    <div class="card @Model.ViewViewModel.UserReviewedSkills[reviewedSkillIndex].GetColourClass() mb-4">
+                                        <div class="card-body">@skill.Detail</div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+
+        </div>
+    }
+

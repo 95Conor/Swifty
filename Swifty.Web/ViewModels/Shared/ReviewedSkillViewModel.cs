@@ -23,5 +23,25 @@ namespace Swifty.Web.ViewModels.Shared
         public bool ReviewedAmber { get; set; }
 
         public bool ReviewedRed { get; set; }
+
+        public string GetColourClass()
+        {
+            if (ReviewedRed)
+            {
+                return "text-white bg-danger";
+            }
+
+            if (ReviewedAmber)
+            {
+                return "bg-warning";
+            }
+
+            if (ReviewedGreen)
+            {
+                return "text-white bg-success";
+            }
+
+            return string.Empty;
+        }
     }
 }

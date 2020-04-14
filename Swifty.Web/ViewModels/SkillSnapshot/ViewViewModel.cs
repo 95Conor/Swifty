@@ -11,8 +11,8 @@ namespace Swifty.Web.ViewModels.SkillSnapshot
     {
         public Dictionary<SkillAreaViewModel, Dictionary<SkillLevelViewModel, List<ReviewedSkillViewModel>>> SkillsByArea { get; set; } = new Dictionary<SkillAreaViewModel, Dictionary<SkillLevelViewModel, List<ReviewedSkillViewModel>>>();
 
-        public List<ReviewedSkillViewModel> UserReviewedSkills { get; set; }
+        public List<ReviewedSkillViewModel> UserReviewedSkills { get; set; } = new List<ReviewedSkillViewModel>();
 
-        public SkillSnapshotSummaryViewModel SkillSnapshotSummary { get; set; }
+        public SkillSnapshotSummaryViewModel SkillSnapshotSummary { get; set; } = new SkillSnapshotSummaryViewModel();
     }
 }
