@@ -14,5 +14,7 @@ namespace Swifty.Web.ViewModels.SkillSnapshot
         public List<ReviewedSkillViewModel> UserReviewedSkills { get; set; } = new List<ReviewedSkillViewModel>();
 
         public SkillSnapshotSummaryViewModel SkillSnapshotSummary { get; set; } = new SkillSnapshotSummaryViewModel();
+
+        public bool ShowAdminOptions { get; set; }
     }
 }

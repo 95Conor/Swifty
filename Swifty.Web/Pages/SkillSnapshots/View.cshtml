@@ -5,6 +5,13 @@
         ViewData["PageLayout"] = "fluid";
 }
 
+@if (@Model.ViewViewModel.ShowAdminOptions)
+{
+    <div style="float: right;">
+        <a href="~/SkillSnapshots/Admin/New/?id=@Model.ViewViewModel.SkillSnapshotSummary.SkillSnapshotId">Load into new snapshot <i class="fa fa-arrow-right"></i></a>
+    </div>
+}
+
 <div>
     <ul>
         <li>Reviewed on: <b>@Model.ViewViewModel.SkillSnapshotSummary.ReviewedDate</b></li>

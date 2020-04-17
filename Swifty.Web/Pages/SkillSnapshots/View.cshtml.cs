@@ -66,7 +66,9 @@ namespace Swifty.Web.Pages.SkillSnapshots
                 return NotFound();
             }
 
-            if (!await _adminService.ValidateIsAdminByEmail(userEmail) && user?.Id != skillSnapshot.UserId.Id)
+            bool isAdminUser = await _adminService.ValidateIsAdminByEmail(userEmail);
+
+            if (!isAdminUser && user?.Id != skillSnapshot.UserId.Id)
             {
                 return RedirectToPagePermanent("/Account/AccessDenied");
             }
@@ -74,10 +76,9 @@ namespace Swifty.Web.Pages.SkillSnapshots
             var allSkillsBySkillArea = await _skillService.ListAllNonArchivedSkillsByAreaAndLevel();
 
             ViewViewModel.SkillsByArea = _mapper.Map<Dictionary<SkillAreaViewModel, Dictionary<SkillLevelViewModel, List<ReviewedSkillViewModel>>>>(allSkillsBySkillArea);
-
             ViewViewModel.SkillSnapshotSummary = _mapper.Map<SkillSnapshotSummaryViewModel>(skillSnapshot);
-
             ViewViewModel.UserReviewedSkills = _mapper.Map<List<ReviewedSkillViewModel>>(skillSnapshot.SkillReferences);
+            ViewViewModel.ShowAdminOptions = isAdminUser;
 
             return Page();
         }

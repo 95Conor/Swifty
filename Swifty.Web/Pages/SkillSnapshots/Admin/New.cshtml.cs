@@ -27,13 +27,15 @@ namespace Swifty.Web.Pages.SkillSnaphsots.Admin
         private readonly IBaseArchiveableRepository<Skill> _skillRepository;
         private readonly IBaseRepository<User> _userRepository;
         private readonly ISkillSnapshotService<SkillSnapshot> _skillSnapshotService;
+        private readonly IBaseRepository<SkillSnapshot> _skillSnapshotRepository;
 
         public NewModel(IMapper mapper, 
             ISkillService<Skill> skillService, 
             IConfiguration configuration, 
             IBaseArchiveableRepository<Skill> skillRepository,
             IBaseRepository<User> userRepository,
-            ISkillSnapshotService<SkillSnapshot> skillSnapshotService)
+            ISkillSnapshotService<SkillSnapshot> skillSnapshotService,
+            IBaseRepository<SkillSnapshot> skillSnapshotRepository)
         {
             _mapper = mapper;
             _skillService = skillService;
@@ -41,6 +43,7 @@ namespace Swifty.Web.Pages.SkillSnaphsots.Admin
             _skillRepository = skillRepository;
             _userRepository = userRepository;
             _skillSnapshotService = skillSnapshotService;
+            _skillSnapshotRepository = skillSnapshotRepository;
         }
 
         [BindProperty]
@@ -48,9 +51,28 @@ namespace Swifty.Web.Pages.SkillSnaphsots.Admin
 
         public SelectList Users { get; set; }
 
-        public async Task<IActionResult> OnGetAsync()
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
-            return await ReturnPage();
+            if (!id.HasValue)
+            {
+                return await ReturnPage();
+            }
+
+            var skillSnapshot = await _skillSnapshotRepository.GetByIdAsync(id.Value);
+
+            if (skillSnapshot == null)
+            {
+                return NotFound();
+            }
+
+            await PopulateModels();
+
+            NewViewModel.UserReviewedSkills = _mapper.Map<List<ReviewedSkillViewModel>>(skillSnapshot.SkillReferences);
+
+            NewViewModel.SelectedUserId = skillSnapshot.UserId.Id.Value;
+            NewViewModel.ReviewerNotes = skillSnapshot.AdminNotes;
+
+            return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()

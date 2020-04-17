@@ -21,6 +21,12 @@ Remaining Functionality ToDo:
 
 - Can we save reviewer notes as HTML instead? Use a rich text editor to save/load/show.
 
+- Make sure skill snapshots etc account for archived skills (and show a certain colour if it is)
+
+- Is there still an issue where for some reason you are no authorised to see the first skill snapshot?
+
+- Ability to have a 'Journal' screen whereby users can literally just save loads of notes and examples?
+	- If have the time, could even allow them to associate a skill ID with a note, so they have all these notes and examples for next review
 
 Styling/Front-End:
 
@@ -35,6 +41,8 @@ Extra:
 
 - Improve error handling across the board and utilise the errors available in the BaseViewModel (and output these in the shared Layout?)
 	- Also log errors?
+
+- Go through all screens and code behind, tidy up code and improve. Can introduce any new design patterns to solve things? Less repetition of things.
 
 
 ----------------------
