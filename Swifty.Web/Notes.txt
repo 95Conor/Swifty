@@ -12,9 +12,6 @@ Current ToDo:
 
 Remaining Functionality ToDo:
 
-
-- Ability for an admin to load a preexisting skillsnapshot into a template for a new snapshot (create a button on the skillsnapshot View page if the user is an admin which posts to new page. New page just needs a handler which accepts an id of a skillsnapshot to load it as template.)
-
 - Ability to create/edit/delete/see all users (even though they are automatically created on login it will be useful for admins when making new snapshots for first time if user hasn't seen site).
 
 - Add a little 'key' on relevant pages outlining what the colours mean. Make these configurable.
