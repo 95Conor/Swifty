@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using Entities = Swifty.Core.Entities;
 using Swifty.Core.Helpers;
-using Swifty.Data.Context;
 using Swifty.Data.Contracts.Repositories;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Entities = Swifty.Core.Entities;
 
 namespace Swifty.Web.Pages.Setup.Admin
 {
+    [Authorize("IsAdmin")]
     public class IndexModel : PageModel
     {
         private readonly IBaseRepository<Entities.Admin> _adminRepository;
@@ -21,7 +18,7 @@ namespace Swifty.Web.Pages.Setup.Admin
             _adminRepository = adminRepository;
         }
 
-        public IList<Entities.Admin> Admins { get;set; }
+        public IList<Entities.Admin> Admins { get; set; }
 
         public async Task OnGetAsync()
         {

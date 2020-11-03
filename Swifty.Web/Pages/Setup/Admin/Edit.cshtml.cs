@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Entities = Swifty.Core.Entities;
-using Swifty.Data.Context;
-using Swifty.Data.Contracts.Repositories;
 using Swifty.Core.Helpers;
+using Swifty.Data.Contracts.Repositories;
+using System.Threading.Tasks;
+using Entities = Swifty.Core.Entities;
 
 namespace Swifty.Web.Pages.Setup.Admin
 {
+    [Authorize("IsAdmin")]
     public class EditModel : PageModel
     {
         private readonly IBaseRepository<Entities.Admin> _adminRepository;
